@@ -1,0 +1,21 @@
+{
+  "short_name": "Enduro Drift Bosnien",
+  "name": "Enduro Drift Bosnien",
+  "icons": [
+  
+    {
+      "src": "log.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "log.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

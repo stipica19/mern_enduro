@@ -1,0 +1,128 @@
+.slid .slider {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  .image{ 
+    background-repeat: no-repeat;
+    width: 100vw; 
+    height: 100vh;
+  }
+  .slider::after{
+    content: ""; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(250, 250, 250, 0));
+    opacity: .7;
+  }
+  .slider .title{
+    color: white;
+    position: absolute;
+    font-family: 'Rowdies', cursive;
+    font-size: 34px;
+    top:30%;
+    left: 15%;
+    text-align: center;
+  }
+  .slider .action{
+    width: auto;
+    padding: 15px;
+    margin-top: 60px;
+    background-color: red;
+    color: white;
+    position: absolute;
+    font-family: 'Rowdies', cursive;
+    font-size: 34px;
+    top:50%;
+    left: 15%;
+    text-align: center;    
+  }
+  .title-1 .empty{
+    display: none;
+  }
+
+  .slider .title1{
+    width: auto;
+    padding: 15px;
+    margin-top: 40px;
+    background-color: red;
+    color: white;
+    position: absolute;
+    font-family: 'Rowdies', cursive;
+    font-size: 34px;
+    top:35%;
+    left: 15%;
+    text-align: center;
+  }
+  
+  @keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+  }
+  .slide {
+    opacity: 0;
+  }
+  .slide.active {
+    transform: showup 1s;
+    transition-duration: 0s;
+    transition-delay: 0s;
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  @media screen and (max-width: 600px) {
+    .slid .slider {
+    margin-top: 69px;
+    position: relative;
+    width: 100vw;
+  
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    }
+   
+    .title,
+    .title-1,
+    .action{
+      display: none;
+    }
+    .title1{
+      display: none;
+    }
+    .image{
+      display:block;
+      max-width: 100%;
+      height: unset;
+     
+    }
+    .right-arrow,
+    .left-arrow{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 1024px) and (min-width: 600px) {
+    .slid .slider {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    }
+   
+  }
+
+  @keyframes move {
+    from {
+       transform: translateX(0);
+    }
+    to {
+       transform: translateX(100px);
+    }
+ }
