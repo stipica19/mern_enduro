@@ -11,12 +11,11 @@ const AdminApply = () => {
   const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
+    console.log("first");
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data: response } = await axios.get(
-          "https://endurodriftbosnien.com/api/apply/" + id
-        );
+        const { data: response } = await axios.get("/api/apply/" + id);
         setReservations(response);
       } catch (error) {
         console.error(error.message);

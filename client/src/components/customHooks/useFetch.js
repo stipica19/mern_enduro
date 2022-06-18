@@ -9,7 +9,7 @@ function useFetch(skip) {
     try {
       setLoading(true);
       const response = await fetch(
-        `https://endurodriftbosnien.com/api/index/getPhoto/?skip=${skip}`
+        `api/index/getPhoto/?skip=${skip}`
       );
       const data = await response.json();
 

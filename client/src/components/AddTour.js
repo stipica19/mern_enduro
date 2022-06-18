@@ -28,11 +28,7 @@ const AddTour = () => {
       checkIn_date,
       checkOut_date,
     };
-    await axios.post(
-      "https://endurodriftbosnien.com/api/tours",
-      JSON.stringify(data),
-      config
-    );
+    await axios.post("/api/tours", JSON.stringify(data), config);
   };
   return (
     <form onSubmit={handleSubmit}>

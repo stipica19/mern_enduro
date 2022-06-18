@@ -24,9 +24,7 @@ const AdminDashboard = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(
-        "https://endurodriftbosnien.com/api/apply"
-      );
+      const { data } = await axios.get("/api/apply");
       //console.log(data);
       setApplys(data);
     } catch (error) {
@@ -37,9 +35,7 @@ const AdminDashboard = () => {
   const getReview = async () => {
     setLoading1(true);
     try {
-      const { data } = await axios.get(
-        "https://endurodriftbosnien.com/api/guestbook"
-      );
+      const { data } = await axios.get("/api/guestbook");
       // //console.log(data);
       setReviews(data);
     } catch (error) {
@@ -60,10 +56,7 @@ const AdminDashboard = () => {
     let newArr = [...reviews];
     //console.log((newArr[index].isVisible = visible));
 
-    axios.put(
-      `https://endurodriftbosnien.com/api/guestbook/${id}`,
-      newArr[index]
-    );
+    axios.put(`api/guestbook/${id}`, newArr[index]);
     setReviews(newArr);
   };
 
@@ -81,18 +74,13 @@ const AdminDashboard = () => {
     };
 
     const { data } = axios
-      .post(
-        "https://endurodriftbosnien.com/api/index/addPhoto",
-        formData,
-        config,
-        {
-          onUploadProgress: (progressEvent) => {
-            let { loaded, total } = progressEvent;
-            let procent = Math.floor((loaded * 100) / total);
-            //console.log("aaa"`${loaded}`);
-          },
-        }
-      )
+      .post("/api/index/addPhoto", formData, config, {
+        onUploadProgress: (progressEvent) => {
+          let { loaded, total } = progressEvent;
+          let procent = Math.floor((loaded * 100) / total);
+          //console.log("aaa"`${loaded}`);
+        },
+      })
       .then((res) => {
         //console.log(res.data);
         setNotification(res.data);
@@ -116,7 +104,7 @@ const AdminDashboard = () => {
     };
     try {
       const { data } = await axios.post(
-        "https://endurodriftbosnien.com/api/index/addYouToube",
+        "/api/index/addYouToube",
         {
           video: video,
         },
@@ -181,7 +169,7 @@ const AdminDashboard = () => {
         </div>
         <div className="card flex">
           {clicked === "rez" ? (
-            <table>
+            <table className="apply-toure">
               <thead>
                 <tr>
                   <th>TOUR NUMBER</th>
@@ -214,7 +202,7 @@ const AdminDashboard = () => {
             </table>
           ) : clicked === "book" ? (
             <>
-              <table>
+              <table className="admin-guestbook">
                 <thead>
                   <tr>
                     <th>NAME AND SURNAME</th>

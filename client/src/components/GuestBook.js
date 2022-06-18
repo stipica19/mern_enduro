@@ -17,9 +17,7 @@ const GuestBook = () => {
   const [reviews, setReviews] = useState([]);
 
   const getReview = async () => {
-    const data = await axios.get(
-      "https://endurodriftbosnien.com/api/guestbook"
-    );
+    const data = await axios.get("/api/guestbook");
     setReviews(data.data.filter((review) => review.isVisible !== false));
     //console.log(data.data.filter((review) => review.isVisible !== false));
   };
@@ -38,7 +36,7 @@ const GuestBook = () => {
     //console.log(typeof rez.current);
     //console.log(rez.current);
     if (spamRez === rez.current) {
-      await axios.post("https://endurodriftbosnien.com/api/guestbook", {
+      await axios.post("/api/guestbook", {
         name,
         email,
         city,

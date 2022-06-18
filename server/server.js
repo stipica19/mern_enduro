@@ -6,7 +6,6 @@ import userRotes from "./routes/userRoutes.js";
 import tourRoutes from "./routes/tourRoutes.js";
 import applyRoutes from "./routes/applyRoutes.js";
 import guestBookRoutes from "./routes/guestBooksRoutes.js";
-import emailRoutes from "./routes/emailRoutes.js";
 import index from "./routes/indexRoutes.js";
 import path from "path";
 
@@ -36,7 +35,6 @@ app.use("/users", userRotes);
 app.use("/tours", tourRoutes);
 app.use("/apply", applyRoutes);
 app.use("/guestbook", guestBookRoutes);
-app.use("/email", emailRoutes);
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 

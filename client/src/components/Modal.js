@@ -14,7 +14,7 @@ const Modal = ({
     <>
       <div className="overlay dismiss" onClick={handleClick}>
         <img
-          src={`https://endurodriftbosnien.com/api/${clickedImg}`}
+          src={`api/${clickedImg}`}
           alt="bigger pic"
         />
         <span className="dismiss" onClick={handleClick}>

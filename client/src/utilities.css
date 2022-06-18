@@ -3,13 +3,11 @@
   margin: 0 auto;
   overflow: auto;
   padding: 0 40px;
-
 }
 
 .card {
   background-color: #fff;
   color: #333;
-
 
   margin: 10px;
   z-index: 99;
@@ -24,11 +22,12 @@
 }
 
 .btn-outline {
-  background-color: transparent;
+  background-color: red;
   border: 2px red solid;
   color: white;
-}
 
+  padding: 15px 65px;
+}
 .btn:hover {
   transform: scale(0.98);
 }
@@ -48,7 +47,7 @@
 
 .bg-dark,
 .btn-dark {
-  background-color:#242424;;
+  background-color: #242424;
   color: #fff;
 }
 
@@ -94,7 +93,7 @@
 }
 
 .md {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .lg {
@@ -135,7 +134,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .grid {
@@ -145,22 +143,20 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  
 }
 
 .grid-44 {
   display: grid;
- grid-auto-columns: minmax(100px, auto);
+  grid-auto-columns: minmax(100px, auto);
   gap: 20px;
   justify-content: center;
   align-items: center;
   height: 100%;
-  
 }
 .grid-1 {
   grid-template-columns: repeat(1, 1fr);
 }
-.grid-2{
+.grid-2 {
   display: grid;
   gap: 20px;
   justify-content: center;
@@ -180,18 +176,18 @@
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: start;
-  justify-content: center
+  justify-content: center;
 }
-.map-grid{
-   display: grid;
-    
-    justify-content: space-around;
+.map-grid {
+  display: grid;
+
+  justify-content: space-around;
 }
-.admin-grid{
-    display: grid;
-    grid-template-columns: 10% 1fr;
+.admin-grid {
+  display: grid;
+  grid-template-columns: 10% 1fr;
 }
-.apply .flex{
+.apply .flex {
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -286,7 +282,7 @@
   padding: 0px;
   z-index: 1;
   background: rgba(28, 28, 28, 0.3);
-  border-radius: 50px 0px  0px 50px ;
+  border-radius: 50px 0px 0px 50px;
 }
 .icon-bar .facebook {
   margin: 10px;
@@ -294,13 +290,12 @@
 .icon-bar .facebook:hover {
   background-color: #000;
 }
-.icon-bar  .fab{
+.icon-bar .fab {
   margin: 20px;
-  color:white;
+  color: white;
 }
 
-
- .delete-btn{
+.delete-btn {
   background-color: transparent;
   font-size: 25px;
   border: none;
@@ -310,4 +305,4 @@
   margin-left: 5px;
   margin-top: 5px;
   z-index: 1;
- }
+}

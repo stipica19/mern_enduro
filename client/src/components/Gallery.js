@@ -19,7 +19,7 @@ const AboutUS = () => {
       },
     };
     const deletePhoto = axios.delete(
-      `https://endurodriftbosnien.com/api/index/deletePhoto/${photoId}`,
+      `/api/index/deletePhoto/${photoId}`,
       config
     );
     window.location.reload(false);
@@ -38,7 +38,7 @@ const AboutUS = () => {
             </button>
           )}
           <img
-            src={`https://endurodriftbosnien.com/api/${photo.image}`}
+            src={`/api/${photo.image}`}
             alt={photo.image}
             onClick={() => handleClick(photo, index)}
           />

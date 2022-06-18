@@ -1,8 +1,9 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 import Map from "./Map";
 import ToastBar from "./ToastBar";
+import { changeLanguage } from "i18next";
 const location = {
   address: "ENDURO DRIFT",
   lat: 43.937859851516265,
@@ -24,6 +25,47 @@ const Contact = () => {
   const number2 = useRef(0);
   let rez = useRef(0);
 
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    if (spamRez === rez.current) {
+      emailjs
+        .sendForm(
+          process.env.REACT_APP_YOUR_SERVICE_ID,
+          process.env.REACT_APP_YOUR_TEMPLATE_ID,
+          form.current,
+          process.env.REACT_APP_YOUR_PUBLIC_KEY
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            setLoading(false);
+
+            setNotification({
+              success: true,
+              message: "Successfully sent an email",
+            });
+            snackbarRef.current.show();
+          },
+          (error) => {
+            console.log(error.text);
+            snackbarRef.current.show();
+            setNotification({
+              message: "Error sending email",
+              success: false,
+            });
+          }
+        );
+    } else {
+      snackbarRef.current.show();
+      setNotification({
+        message: "Spam Check is not valid",
+        success: false,
+      });
+    }
+  };
+
   useEffect(() => {
     number1.current = Math.floor(Math.random() * 10);
     number2.current = Math.floor(Math.random() * 11);
@@ -32,41 +74,6 @@ const Contact = () => {
     //console.log(number1.current);
     //console.log("first");
   }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!email || !message || !name) {
-      return;
-    }
-    try {
-      if (spamRez === rez.current) {
-        setLoading(true);
-        const { data } = await axios.post(
-          "https://endurodriftbosnien.com/api/email/contact",
-          {
-            email,
-            name,
-            message,
-          }
-        );
-        setLoading(false);
-        //console.log(data);
-        setNotification(data);
-        snackbarRef.current.show();
-      } else {
-        snackbarRef.current.show();
-        setNotification({
-          message: "Spam Check is not valid",
-          success: false,
-        });
-      }
-    } catch (error) {
-      //console.log(error);
-      setLoading(false);
-      setNotification(error);
-    }
-  };
 
   return (
     <section className="docs-main contact">
@@ -91,7 +98,7 @@ const Contact = () => {
               Phone: +387 63 136 095
               <br /> E-mail: endurodriftbosnien@gmail.com
             </p>
-            <form onSubmit={handleSubmit}>
+            <form ref={form} onSubmit={sendEmail}>
               <div className="form-date">
                 {" "}
                 <div className="date-form">
@@ -101,7 +108,7 @@ const Contact = () => {
                     </label>
                     <input
                       type="text"
-                      name="name"
+                      name="user_name"
                       onChange={(e) => setName(e.target.value)}
                       required
                     />
@@ -110,23 +117,14 @@ const Contact = () => {
                 <div className="date-form">
                   <div className="form-control">
                     <label htmlFor="email">EMAIL</label>
-                    <input
-                      type="email"
-                      name="email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
+                    <input type="email" name="user_email" required />
                   </div>
                 </div>
               </div>
               <div className="date-form">
                 <label htmlFor="message">{t("contact_msg")}</label>
                 <div className="form-control">
-                  <textarea
-                    name="message"
-                    id="message"
-                    onChange={(e) => setMessage(e.target.value)}
-                  ></textarea>
+                  <textarea name="message" id="message"></textarea>
                 </div>
               </div>
               <div className="date-form">

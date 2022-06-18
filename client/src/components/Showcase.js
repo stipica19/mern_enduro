@@ -1,65 +1,78 @@
 import React from "react";
 import { SliderData } from "./ImageSlider/SlideData";
-import SlidingText from "./SlidingText";
+import SlidingText from "./SlidingText/SlidingText";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper";
+import SwiperCore, { Navigation, Autoplay, Lazy } from "swiper";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import "./ImageSlider/Slider.css";
-function imgUrl(index) {
-  return SliderData[index].image;
-}
 
-function createSlide(index) {
-  return (
-    <SwiperSlide>
-      <div className="slid">
-        <section className="slider minislider">
-          <img
-            className="image"
-            src={imgUrl(index)}
-            alt="enduro touren bosnien"
-          />
-          <h1 className="title" data-aos="fade-up" data-aos-duration="500">
-            {SliderData[index].title}
-          </h1>
-          {SliderData[index].title1 && (
-            <div className="title-2221">
-              <h1
-                className="title1"
-                data-aos="fade-right"
-                data-aos-duration="1500"
-                data-aos-easing="ease-in-sine"
-              >
-                {SliderData[index].title1}
-              </h1>
-            </div>
-          )}
-        </section>
-      </div>
-    </SwiperSlide>
-  );
-}
-
+SwiperCore.use([Navigation, Autoplay, Lazy]);
 const Showcase = () => {
+  const swiperOption = {
+    loop: true,
+    speed: 250,
+    spaceBetween: 0,
+    slidesPerView: 1,
+    observer: true,
+    observeParents: true,
+    lazy: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+  };
+
   return (
     <section className="showcase">
       <SlidingText />
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        slidesPerView={1}
-        navigation
-        autoplay={{ delay: 5000 }}
-        pagination={{ clickable: true }}
-      >
-        {createSlide(0)}
-        {createSlide(1)}
-        {createSlide(2)}
-        {createSlide(3)}
+      <Swiper {...swiperOption}>
+        {SliderData &&
+          SliderData.map((single, key) => {
+            return (
+              <SwiperSlide key={single.image}>
+                <div className="slid">
+                  <section className="slider minislider">
+                    <img
+                      className="image"
+                      src={single.image}
+                      alt="enduro touren bosnien"
+                    />
+                    <h1
+                      className="title"
+                      data-aos="fade-up"
+                      data-aos-duration="500"
+                    >
+                      {single.title}
+                    </h1>
+                    {single.title1 && (
+                      <div className="title-2221">
+                        <h1
+                          className="title1"
+                          data-aos="fade-right"
+                          data-aos-duration="1500"
+                          data-aos-easing="ease-in-sine"
+                        >
+                          {single.title1}
+                        </h1>
+                      </div>
+                    )}
+                  </section>
+                </div>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
+
+      <Swiper
+        effect="fade"
+        className="slider-active"
+        {...swiperOption}
+      ></Swiper>
 
       <div className="poderano"></div>
     </section>

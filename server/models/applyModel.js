@@ -3,14 +3,6 @@ import bcrypt from "bcryptjs";
 
 const applySchema = mongoose.Schema(
   {
-    /* fromDate: {
-      type: Date,
-      required: true,
-    },
-    unitlDate: {
-      type: Date,
-      required: true,
-    },*/
     tour_type: {
       type: String,
       required: true,
@@ -30,11 +22,9 @@ const applySchema = mongoose.Schema(
     },
     date_of_birth: {
       type: Date,
-      required: true,
     },
     mobitel: {
       type: String,
-      required: true,
     },
     email: {
       type: String,
@@ -42,17 +32,15 @@ const applySchema = mongoose.Schema(
     },
     skill: {
       type: String,
-      required: true,
     },
     number_person: {
       type: Number,
       required: true,
       min: 0,
-      max: 15,
+      max: 20,
     },
     traveling: {
       type: String,
-      required: true,
     },
     rentaBike: {
       type: Boolean,
@@ -60,7 +48,6 @@ const applySchema = mongoose.Schema(
     },
     message: {
       type: String,
-      required: true,
     },
   },
   {

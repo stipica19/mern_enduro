@@ -10,7 +10,7 @@ const Termine = () => {
 
   useEffect(() => {
     const getTermine = async () => {
-      const data = await axios.get("https://endurodriftbosnien.com/api/tours/");
+      const data = await axios.get("/api/tours/");
 
       setTermine(data.data.slice(0, 34));
       setTermine23(data.data.slice(34));

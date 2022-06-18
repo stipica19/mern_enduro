@@ -45,6 +45,7 @@ const Tour = () => {
 
         <img
           data-aos="fade-right"
+          data-aos-once="false"
           src={image1}
           alt="enduro drift bosnien"
           className="about_image"
@@ -53,6 +54,7 @@ const Tour = () => {
       <div className="container grid">
         <img
           data-aos="fade-right"
+          data-aos-once="false"
           src={image2}
           alt="enduro drift bosnien"
           className="about_image"
@@ -93,6 +95,7 @@ const Tour = () => {
         </div>
         <img
           data-aos="fade-right"
+          data-aos-once="false"
           src={image3}
           alt="enduro drift bosnien"
           className="about_image"

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,8 @@ import axios from "axios";
 import moment from "moment";
 import "moment/locale/hr";
 import ToastBar from "./ToastBar";
+import emailjs from "@emailjs/browser";
+
 const Apply = () => {
   const { t } = useTranslation();
 
@@ -70,12 +72,13 @@ const Apply = () => {
     message: "",
     success: false,
   });
+  const form = useRef();
 
   const [termine23, setTermine23] = useState([]);
   const [display, setDiplayForm] = useState("22");
 
   const getTermine = async () => {
-    const data = await axios.get("https://endurodriftbosnien.com/api/tours/");
+    const data = await axios.get("/api/tours/");
     setTermine23(data.data.slice(34));
     setTermine(data.data.slice(0, 34));
   };
@@ -92,33 +95,45 @@ const Apply = () => {
     setRentaBike(!rentaBike);
   };
 
-  const handleSubmit = async (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     try {
       if (accept) {
         setLoading(true);
-        const { data } = await axios.post(
-          "https://endurodriftbosnien.com/api/apply",
-          {
-            tour_type,
-            tour_number,
-            name,
-            address,
-            date_of_birth,
-            mobitel,
-            email,
-            skill,
-            number_person,
-            traveling,
-            rentaBike,
-            message,
-          }
-        );
+        const { data } = await axios.post("/api/apply", {
+          tour_type,
+          tour_number,
+          name,
+          address,
+          date_of_birth,
+          mobitel,
+          email,
+          skill,
+          number_person,
+          traveling,
+          rentaBike,
+          message,
+        });
         setLoading(false);
 
         setNotification(data);
         snackbarRef.current.show();
+        emailjs
+          .sendForm(
+            process.env.REACT_APP_YOUR_SERVICE_ID,
+            process.env.REACT_APP_YOUR_TEMPLATE_ID_APPLY,
+            form.current,
+            process.env.REACT_APP_YOUR_PUBLIC_KEY
+          )
+          .then(
+            (result) => {
+              console.log(result.text);
+            },
+            (error) => {
+              console.log(error.text);
+            }
+          );
       }
     } catch (error) {
       setLoading(false);
@@ -224,13 +239,13 @@ const Apply = () => {
 
         <div className="card flex">
           <div className="form card">
-            <form onSubmit={handleSubmit}>
+            <form ref={form} onSubmit={sendEmail}>
               <div className="form-date grid">
                 <div className="date-form grid">
                   <label htmlFor="tour">Tour 1</label>
                   <input
                     type="radio"
-                    name="Tour 1"
+                    name="tour_type"
                     value="tour 1"
                     checked={tour_type === "tour 1"}
                     onChange={radioTour}
@@ -238,7 +253,7 @@ const Apply = () => {
                   <label htmlFor="tour">Tour 2</label>
                   <input
                     type="radio"
-                    name="Tour 2"
+                    name="tour_type"
                     value="tour 2"
                     checked={tour_type === "tour 2"}
                     onChange={radioTour}
@@ -246,7 +261,7 @@ const Apply = () => {
                   <label htmlFor="tour">Tour 3</label>
                   <input
                     type="radio"
-                    name="Tour 3"
+                    name="tour_type"
                     value="tour 3"
                     checked={tour_type === "tour 3"}
                     onChange={radioTour}
@@ -296,8 +311,7 @@ const Apply = () => {
                     <label htmlFor="ADDRESS">ADDRESS</label>
                     <input
                       type="text"
-                      name="ADDRESS"
-                      required
+                      name="address"
                       onChange={(e) => setAddress(e.target.value)}
                     />
                   </div>
@@ -328,9 +342,8 @@ const Apply = () => {
                     <label htmlFor="TEL/MOB">{t("apply_tel")}</label>
                     <input
                       type="text"
-                      name="TEL/MOB"
+                      name="mob"
                       onChange={(e) => setMobitel(e.target.value)}
-                      required
                     />
                   </div>
                 </div>
@@ -358,6 +371,7 @@ const Apply = () => {
                       {t("apply_traveling")}
                     </label>
                     <select
+                      name="traveling"
                       selected
                       onChange={(e) => {
                         setTraveling(e.target.value);
@@ -377,8 +391,8 @@ const Apply = () => {
                     <label htmlFor="Renta a Bike">Rent a Bike </label>
                     <input
                       type="checkbox"
-                      name="Renta Bike"
-                      value="Renta Bike"
+                      name="rentaBike"
+                      value="Rent a Bike"
                       checked={rentaBike}
                       onChange={handeleRentaBike}
                     />

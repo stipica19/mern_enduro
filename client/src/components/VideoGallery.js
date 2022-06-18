@@ -7,9 +7,7 @@ const VideoGallery = () => {
 
   const getVideos = async () => {
     try {
-      const response = await axios.get(
-        "https://endurodriftbosnien.com/api/index/getYouTube"
-      );
+      const response = await axios.get("/api/index/getYouTube");
 
       //console.log(response.data);
 
