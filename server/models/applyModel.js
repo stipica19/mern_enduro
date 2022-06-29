@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const applySchema = mongoose.Schema(
   {
@@ -10,7 +10,7 @@ const applySchema = mongoose.Schema(
     tour_number: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "Tour",
+      ref: 'Tour',
     },
     name: {
       type: String,
@@ -18,7 +18,6 @@ const applySchema = mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
     },
     date_of_birth: {
       type: Date,
@@ -55,6 +54,6 @@ const applySchema = mongoose.Schema(
   }
 );
 
-const Apply = mongoose.model("Apply", applySchema);
+const Apply = mongoose.model('Apply', applySchema);
 
 export default Apply;

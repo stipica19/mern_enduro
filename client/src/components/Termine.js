@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import moment from "moment";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 const Termine = () => {
   const [termine, setTermine] = useState([]);
@@ -10,11 +10,17 @@ const Termine = () => {
 
   useEffect(() => {
     const getTermine = async () => {
-      const data = await axios.get("/api/tours/");
-
-      setTermine(data.data.slice(0, 34));
-      setTermine23(data.data.slice(34));
-      //console.log(data.data);
+      const data = await axios
+        .get('/api/tours/')
+        .then((res) => {
+          setTermine(
+            res.data.filter((data) => data.tour_number < 199)
+          );
+          setTermine23(
+            res.data.filter((data) => data.tour_number > 199)
+          );
+        })
+        .catch((err) => console.log(err));
     };
     getTermine();
   }, []);
@@ -25,10 +31,10 @@ const Termine = () => {
         <div className="card termine-color flex">
           <div className="boja">
             <div>
-              <p>{t("termine_free")}</p>
+              <p>{t('termine_free')}</p>
             </div>
             <div>
-              <p> {t("termine_nofree")}</p>
+              <p> {t('termine_nofree')}</p>
             </div>
           </div>
         </div>
@@ -40,31 +46,33 @@ const Termine = () => {
           <table className="moto-date">
             <thead>
               <tr>
-                <th>{t("apply_th1")}</th>
-                <th>{t("apply_th2")}</th>
-                <th>{t("apply_th3")}</th>
+                <th>{t('apply_th1')}</th>
+                <th>{t('apply_th2')}</th>
+                <th>{t('apply_th3')}</th>
                 {/*<th>{t("apply_th4")}</th> */}
-                <th>{t("apply_th5")}</th>
+                <th>{t('apply_th5')}</th>
               </tr>
             </thead>
             <tbody>
               {termine.map((termine) => (
                 <tr key={termine._id}>
                   <td>{termine.tour_number}</td>
-                  <td>{moment(termine.checkIn_date).format("l")}</td>
-                  <td>{moment(termine.checkOut_date).format("l")}</td>
+                  <td>{moment(termine.checkIn_date).format('l')}</td>
+                  <td>{moment(termine.checkOut_date).format('l')}</td>
                   {/* <td>{termine.tour_duration}</td>*/}
                   <td
                     className={`${
-                      termine.tour_space === 0 ? "rezervirano" : "slobodno"
+                      termine.tour_space === 0
+                        ? 'rezervirano'
+                        : 'slobodno'
                     }`}
                   >
                     {termine.tour_space !== 0 ? (
                       <p>
-                        {t("apply_yesterm")} {termine.tour_space}
+                        {t('apply_yesterm')} {termine.tour_space}
                       </p>
                     ) : (
-                      <p>{t("apply_noterm")}</p>
+                      <p>{t('apply_noterm')}</p>
                     )}
                   </td>
                 </tr>
@@ -92,20 +100,22 @@ const Termine = () => {
               {termine23.map((termine) => (
                 <tr key={termine._id}>
                   <td>{termine.tour_number}</td>
-                  <td>{moment(termine.checkIn_date).format("l")}</td>
-                  <td>{moment(termine.checkOut_date).format("l")}</td>
+                  <td>{moment(termine.checkIn_date).format('l')}</td>
+                  <td>{moment(termine.checkOut_date).format('l')}</td>
                   {/* <td>{termine.tour_duration}</td>*/}
                   <td
                     className={`${
-                      termine.tour_space === 0 ? "rezervirano" : "slobodno"
+                      termine.tour_space === 0
+                        ? 'rezervirano'
+                        : 'slobodno'
                     }`}
                   >
                     {termine.tour_space !== 0 ? (
                       <p>
-                        {t("apply_yesterm")} {termine.tour_space}
+                        {t('apply_yesterm')} {termine.tour_space}
                       </p>
                     ) : (
-                      <p>{t("apply_noterm")}</p>
+                      <p>{t('apply_noterm')}</p>
                     )}
                   </td>
                 </tr>

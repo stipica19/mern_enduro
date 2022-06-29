@@ -6,8 +6,7 @@ import SwiperCore, { Navigation, Autoplay, Lazy } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+
 import "swiper/css/autoplay";
 import "./ImageSlider/Slider.css";
 
@@ -67,12 +66,6 @@ const Showcase = () => {
             );
           })}
       </Swiper>
-
-      <Swiper
-        effect="fade"
-        className="slider-active"
-        {...swiperOption}
-      ></Swiper>
 
       <div className="poderano"></div>
     </section>

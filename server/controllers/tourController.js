@@ -1,9 +1,8 @@
-import Tour from "../models/tourModel.js";
-import generateToken from "../utils/generateToken.js";
-import asyncHandler from "express-async-handler";
+import Tour from '../models/tourModel.js';
+import generateToken from '../utils/generateToken.js';
+import asyncHandler from 'express-async-handler';
 
 const addTour = asyncHandler(async (req, res) => {
-  //console.log(req.body);
   const {
     tour_number,
     checkIn_date,
@@ -17,7 +16,7 @@ const addTour = asyncHandler(async (req, res) => {
 
   if (tour) {
     res.status(400);
-    throw new Error("Tour already exists");
+    throw new Error('Tour already exists');
   }
   const newTour = Tour.create({
     tour_number,
@@ -27,24 +26,31 @@ const addTour = asyncHandler(async (req, res) => {
     tour_availability,
     tour_space,
   });
+
   if (newTour) {
     res.status(201).json({
       tour_number,
     });
   } else {
     res.status(400);
-    throw new Error("Invalid Tour date");
+    throw new Error('Invalid Tour date');
   }
 });
 
 //GET ALL TOURS
 const getAllTours = asyncHandler(async (req, res) => {
-  const tours = await Tour.find();
+  const tours = await Tour.find({
+    checkOut_date: {
+      $gte: new Date(),
+      $lt: '2023-12-12T18:00:00.000Z',
+    },
+  });
+
   if (tours) {
     res.json(tours);
   } else {
     res.status(404);
-    throw new Error("Tours not found");
+    throw new Error('Tours not found');
   }
 });
 
@@ -56,7 +62,7 @@ const getTourById = asyncHandler(async (req, res) => {
     res.json(tour);
   } else {
     res.status(404);
-    throw new Error("Tour not found");
+    throw new Error('Tour not found');
   }
 });
 

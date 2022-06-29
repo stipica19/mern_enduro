@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import logo from "../images/log.png";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import deFlag from "../images/flags/4x3/de.svg";
-import gbFlag from "../images/flags/4x3/gb.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../action/userAction";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-
+import { flags } from "./ImageSlider/SlideData";
 const Navbar = () => {
   const { t } = useTranslation();
   const [menuClicked, setMenuClicked] = useState(false);
@@ -168,7 +166,7 @@ const Navbar = () => {
               i18next.changeLanguage("de");
             }}
           >
-            <img src={deFlag} alt="deFlag" className="flags" />
+            <img src={flags[0].link} alt="deFlag" className="flags" />
           </li>
           <li
             className="navbar__item"
@@ -176,7 +174,7 @@ const Navbar = () => {
               i18next.changeLanguage("en");
             }}
           >
-            <img src={gbFlag} alt="deFlag" className="flags" />
+            <img src={flags[1].link} alt="deFlag" className="flags" />
           </li>
         </ul>
       </div>

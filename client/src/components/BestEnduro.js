@@ -1,11 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import mapa from "../images/mapa.webp";
-import vranica from "../images/vranica.webp";
-import prokosko from "../images/prokosko.webp";
-import ramsko from "../images/ramsko.webp";
-import radusa from "../images/radusa.webp";
-import tour from "../images/tour.jpg";
+import mapa from "../images/nature/mapa.webp";
+import vranica from "../images/nature/vranica.webp";
+import prokosko from "../images/nature/prokosko.webp";
+import ramsko from "../images/nature/ramsko.webp";
+import radusa from "../images/nature/radusa.webp";
+import tour from "../images/nature/tour.jpg";
 
 const BestEnduro = () => {
   const { t } = useTranslation();

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-
-import { imageMladen } from "../data/images";
+import { imageMladen } from "./ImageSlider/SlideData";
 
 const TourGuide = () => {
   const { t } = useTranslation();

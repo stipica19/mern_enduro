@@ -22,8 +22,8 @@
 }
 
 .btn-outline {
-  background-color: red;
-  border: 2px red solid;
+  background-color: #fb4747;
+  border: 2px #fb4747 solid;
   color: white;
 
   padding: 15px 65px;
@@ -305,4 +305,8 @@
   margin-left: 5px;
   margin-top: 5px;
   z-index: 1;
+}
+.error-input {
+  color: red;
+  font-size: 12px;
 }

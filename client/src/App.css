@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300&family=Ubuntu:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&family=Ubuntu:wght@700&display=swap');
 :root {
   --primary-color: #047aed;
   --secondary-color: #1c3fa8;
@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: #333;
   line-height: 1.6;
   overflow: visible;
@@ -313,7 +313,7 @@ pre {
   }
 
   .navbar span::after {
-    content: "+";
+    content: '+';
     position: absolute;
     display: inline-block;
     height: 10px;
@@ -344,7 +344,7 @@ pre {
 .showcase h1 {
   color: red;
   font-size: 74px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 800;
 }
 .showcase p span:last-child {
@@ -356,7 +356,7 @@ pre {
 .showcase p {
   font-size: 32px;
   font-weight: 800;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   margin: 10px 0;
 }
 
@@ -381,15 +381,7 @@ pre {
   width: 500px;
   padding: 10px;
 }
-/*
-.form input[type='text'],
-.form input[type='email'] {
-  border-radius: calc(5.8rem * 0.3);
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  transition: .3s border-color;
-}*/
+
 .form select {
   padding: 12px 15px;
   border: none;
@@ -408,15 +400,16 @@ pre {
 .showcase-text-apply h1 {
   color: red;
   font-size: 44px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 800;
 }
 .date-form {
   padding: 5px;
+  width: 100%;
 }
 
-.showcase-form input[type="text"],
-.showcase-form input[type="email"] {
+.showcase-form input[type='text'],
+.showcase-form input[type='email'] {
   border: 0;
   border-bottom: 1px solid #b4becb;
   width: 100%;
@@ -442,14 +435,14 @@ pre {
 }
 .dugme p {
   transform: skew(25deg);
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: red;
   z-index: 55;
 }
 
 .poderano {
   position: absolute;
-  background-image: url("./images/poderano.png");
+  background-image: url('./images/poderano.png');
   filter: drop-shadow(6px -5px 1px #222);
   background-repeat: repeat-x;
   height: 110px;
@@ -511,7 +504,7 @@ h1 {
   padding-bottom: 20px;
 }
 .stats.youtube::before {
-  content: "";
+  content: '';
   position: absolute;
   background-color: red;
   width: 105px;
@@ -547,7 +540,7 @@ h1 {
 
 /* Languages */
 .tours {
-  background-image: url("./images/card_bg.webp");
+  background-image: url('./images/card_bg.webp');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -576,7 +569,7 @@ h1 {
   color: white;
 }
 .tours .tour-title h2::before {
-  content: "";
+  content: '';
   position: absolute;
   background-color: red;
   width: 15%;
@@ -585,7 +578,7 @@ h1 {
 }
 
 .tours h1::before {
-  content: "";
+  content: '';
   position: absolute;
   background-color: red;
   width: 45px;
@@ -617,7 +610,7 @@ h1 {
   display: grid;
   grid-template-columns: 300px;
   grid-template-rows: 210px 290px 150px;
-  grid-template-areas: "image" "text" "stats";
+  grid-template-areas: 'image' 'text' 'stats';
   background: white;
   font-family: roboto;
   text-align: center;
@@ -649,7 +642,7 @@ h1 {
   grid-area: text;
   height: 300px;
 
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   margin-top: 100px;
   margin-bottom: 25px;
   margin-left: 25px;
@@ -677,7 +670,7 @@ h1 {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-family: "Ubunut", sans-serif;
+  font-family: 'Ubunut', sans-serif;
 }
 /*************************************************************/
 
@@ -703,7 +696,7 @@ h1 {
   z-index: 55;
 }
 .features-sub-head {
-  background: url("./images/spura_2.png") no-repeat;
+  background: url('./images/spura_2.png') no-repeat;
   background-size: 700px;
   background-position: right;
   overflow-x: hidden;
@@ -728,8 +721,11 @@ h1 {
   width: 500px;
 }
 .features-main {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(140, 140, 140, 0)),
-    url("./images/slide3.webp");
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.95),
+      rgba(140, 140, 140, 0)
+    ),
+    url('./images/slide3.webp');
   padding-top: 150px;
   padding-bottom: 150px;
   background-repeat: no-repeat;
@@ -822,8 +818,11 @@ h1 {
 /*Apply*/
 
 .docs-main.apply {
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(140, 140, 140, 0.3)),
-    url("./images/bg_termine.webp");
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(140, 140, 140, 0.3)
+    ),
+    url('./images/bg_termine.webp');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -846,11 +845,22 @@ h1 {
 .apply table {
   margin-top: 10px;
 }
+.grid-apply .grid {
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  gap: 10px;
+}
+.apply .form-control label {
+  font-size: 12px;
+}
 
 /* Docs */
 .docs-main {
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(140, 140, 140, 0)),
-    url("./images/slide3.webp");
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(140, 140, 140, 0)
+    ),
+    url('./images/slide3.webp');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -867,7 +877,7 @@ h1 {
 .docs-main h1 {
   color: red;
   font-size: 44px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -895,7 +905,6 @@ h1 {
   object-fit: contain;
   margin: 60px auto;
 }
-
 .docs-main .docs-apply {
   position: absolute;
   top: 12%;
@@ -904,14 +913,8 @@ h1 {
 .docs-main h3 {
   color: red;
   font-size: 24px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 800;
-}
-
-.docs-main .grid {
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-start;
-  gap: 10px;
 }
 
 .docs-main nav li {
@@ -941,7 +944,7 @@ h1 {
 }
 .footer-poderano {
   position: absolute;
-  background-image: url("./images/footerP.png");
+  background-image: url('./images/footerP.png');
   background-repeat: repeat-x;
   height: 110px;
   width: 100%;
@@ -1093,6 +1096,7 @@ a .fa-youtube:hover {
   .apply .moto-date tr,
   th {
     font-size: 10px;
+    color: #000;
   }
   .apply .container {
     padding: 0 15px;
@@ -1172,16 +1176,16 @@ a .fa-youtube:hover {
   }
   .docs-main h1 {
     color: red;
-    font-size: 32px;
+    font-size: 24px;
     text-align: center;
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 800;
   }
   .docs-main .card {
     margin: 0;
   }
   .form {
-    width: 300px;
+    width: 100%;
     padding: 10px;
   }
   .docs-apply .flex {
@@ -1194,6 +1198,7 @@ a .fa-youtube:hover {
     text-align: left;
     color: white;
   }
+
   .features-main .form-control input {
     border-radius: calc(5.8rem * 0.3);
     width: 100%;
@@ -1484,10 +1489,10 @@ a .fa-youtube:hover {
   position: relative;
 }
 
-.form-date .form-control input[type="text"],
-.form-date .form-control input[type="email"],
-.form-control input[type="number"],
-.form-date .form-control input[type="password"],
+.form-date .form-control input[type='text'],
+.form-date .form-control input[type='email'],
+.form-control input[type='number'],
+.form-date .form-control input[type='password'],
 .date-pick,
 select {
   width: 100%;
@@ -1498,6 +1503,7 @@ select {
   padding: 0 20px;
   box-sizing: border-box;
 }
+
 .form-date .form-control textarea {
   width: 100%;
   border: 0;
@@ -1507,6 +1513,77 @@ select {
   padding: 20px;
   box-sizing: border-box;
   min-height: 150px;
+}
+.docs-main textarea:focus,
+.docs-main input:focus {
+  outline: none;
+}
+
+.container1 {
+  display: flex;
+  position: relative;
+  /* padding-left: 35px; */
+  margin-bottom: 19px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Hide the browser's default checkbox */
+.container1 input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+  padding-left: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container1:hover input[type='checkbox'] ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container1 input[type='checkbox']:checked ~ .checkmark {
+  background-color: #2196f3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container1 input[type='checkbox']:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container1 .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /*===========END CONTACT=======*/
@@ -1531,8 +1608,11 @@ select {
 /*===========TERMINE===================*/
 
 .docs-main.termine {
-  background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(140, 140, 140, 0)),
-    url("./images/bg_termine.webp");
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.95),
+      rgba(140, 140, 140, 0)
+    ),
+    url('./images/bg_termine.webp');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -1561,7 +1641,7 @@ select {
 .termine .boja div {
   display: flex;
   justify-content: center;
-  background-color: #00ff11;
+  background-color: #43c94c;
   width: 30px;
   padding: 30px;
   margin: 100px;
@@ -1571,7 +1651,7 @@ select {
 .termine .boja div:last-child {
   display: flex;
   justify-content: center;
-  background-color: red;
+  background-color: #fb4747;
   margin: 100px;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -1601,6 +1681,8 @@ table.moto-date tr:first-child th {
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
+  background-color: white;
+  color: #000;
 }
 
 .moto-date td,
@@ -1617,12 +1699,6 @@ table td:first-child {
 .moto-date tr:nth-child(even) {
   background-color: #f2f2f2;
   color: black;
-}
-
-.moto-date tr:nth-child(17) td:last-child::before {
-  content: "besetzt bei Moto Druiden";
-  font-weight: bold;
-  font-size: 16px;
 }
 
 .moto-date tr:hover {
@@ -1642,6 +1718,7 @@ table td:first-child {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
+  color: #000;
 }
 .moto-date td:last-child {
   padding-top: 2px;
@@ -1650,10 +1727,10 @@ table td:first-child {
   color: white;
 }
 .moto-date td.rezervirano {
-  background-color: red;
+  background-color: #fb4747;
 }
 .moto-date td.slobodno {
-  background-color: #00ff11;
+  background-color: #43c94c;
 }
 .termine .flex {
   display: flex;
@@ -1675,7 +1752,7 @@ table td:first-child {
 }
 
 .loader {
-  background-image: url("./images/enduro\ drift\ bosnien2.png");
+  background-image: url('./images/enduro\ drift\ bosnien2.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1861,9 +1938,7 @@ th:last-child {
   }
 }
 /*====================TOAST============*/
-.date-form .renta-bike {
-  margin-top: 35px;
-}
+
 .best-end img {
   max-width: 100%;
   height: 350px;

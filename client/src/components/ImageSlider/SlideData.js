@@ -1,18 +1,40 @@
 export const SliderData = [
   {
-    image: "../../images/slider1.webp",
+    image: "images/slider1.webp",
+    title: "DRIFT ON LIFE IS SHORT",
+    title1: "Für dieses Jahr Rabatt -10%",
+  },
+  {
+    image: "images/cover_enduro_drift_bosnien.webp",
     title: "ENDURO DRIFT BOSNIEN",
-    title1: "DRIFT ON LIFE IS SHORT",
+    title1: "Für dieses Jahr Rabatt -10%",
   },
   {
-    image: "../../images/cover_enduro_drift_bosnien.webp",
+    image: "images/slider2.webp",
+    title: "DRIFT ON LIFE IS SHORT",
+    title1: "Für dieses Jahr Rabatt -10%",
+  },
+  {
+    image: "images/bg_termine.webp",
     title: "ENDURO DRIFT BOSNIEN",
-    title1: "BUCHE SIE JETZT",
+    title1: "Für dieses Jahr Rabatt -10%",
+  },
+];
+
+export const imageMladen = [
+  {
+    link: "images/001-7.jpg",
   },
   {
-    image: "../../images/slider2.webp",
+    link: "images/001-9.jpg",
+  },
+];
+
+export const flags = [
+  {
+    link: "images/flags/de.svg",
   },
   {
-    image: "../../images/bg_termine.webp",
+    link: "images/flags/gb.svg",
   },
 ];
