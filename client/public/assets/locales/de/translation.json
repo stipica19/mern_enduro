@@ -26,7 +26,7 @@
 
   "tour3_p1": "5 Fahrtage",
   "tour3_p2": "- 690€ (mit eigenem Motorrad)",
-  "tour3_p3": "- 1100€ (mit unserem Motorrad)",
+  "tour3_p3": "- 960€ (mit unserem Motorrad)",
   "tour3_p4": "- inkl. : - 6 Übernachtungen, Frühstück, Guide",
   "tour3_p5": "- excl. Benzin (1,50 Euro/1 Liter),",
   "tour3_p6": " Ausrüstung 20 Euro pro Tag,",
@@ -44,7 +44,7 @@
   "best_lokacija": "Unser Standort ist Gornji Vakuf - Uskoplje",
   "jezero": "See",
 
-  "moto_p1": "Wir lieben unsere Fahrräder. Sie sehen nicht nur toll aus, sondern verhalten sich auch so.",
+  "moto_p1": "Wir lieben unsere Motorräder. Sie sehen nicht nur toll aus, sondern verhalten sich auch so.",
   "moto_p2": "Die neuen BETA-Modelle 2019 sind leicht und handlich. Sie sind auch mit leistungsstarken Motoren ausgestattet, die zuverlässig sind. Diese lassen sich hervorragend handhaben und sind für Trails ausgelegt.",
   "moto_p3": "Wie Sie vielleicht schon gehört haben, sind sie die sogenannten „READY TO RACE“.",
   "moto_p4": "Sie können wählen zwischen:",
@@ -92,5 +92,26 @@
 
   "contact_name": "VORNAME UND NACHNAME *",
   "contact_msg": "NACHRICHT",
-  "contact_btn": "SENDEN"
+  "contact_btn": "SENDEN",
+  "rule_title": "Regeln",
+  "rule_1": "- Stellen Sie sicher, dass Ihr Fahrrad bereit für die Tour ist",
+  "rule_2": "- Verlasse die Spur nicht",
+  "rule_3": "- Kleines Erste-Hilfe-Set erforderlich",
+  "rule_4": "- Suche nicht nach Guide, er wird zu dir zurückkommen",
+  "rule_5": "- Befolgen Sie die Verkehrszeichen und respektieren Sie den Verkehr",
+  "rule_6": "- Überhol deinen Guide nicht",
+  "rule_7": "- Ihr Fahrrad reicht 100 km pro Tag vollgetankt",
+  "rule_8": "- Nehmen Sie mindestens 1,5 l Wasser mit",
+  "rule_9": "- Nimm dein Handy mit",
+  "rule_10": "- Nimm ein paar Bolzen mit",
+  "rule_11": "- Nehmen Sie Metallkleber mit, um Abdeckungen zu befestigen ...",
+  "rule_12": "- Fahrradwerkzeug benötigt",
+  "rule_13": "- Wenn du mit Schläuchen fährst, nimm den zweiten Schlauch und pumpe",
+  "rule_14": "- Speerbremse und Kupplungshebel mitnehmen",
+  "rule_15": "- Geld zum Mittagessen mitnehmen",
+  "rule_16": "- Falls Sie sich nicht an unsere Unternehmensregeln halten, wird Ihnen jede benötigte Unterstützung extra in Rechnung gestellt",
+  "rule_17": "DANKE",
+  "gang_title": "Ausrüstung",
+  "gang": "Wenn Sie ohne Enduro-Ausrüstung anreisen, müssen Sie sich keine Sorgen machen. Wir haben Ihnen die passende Ausrüstung in allen möglichen Größen zur Verfügung gestellt. Die Ausrüstung, die Ihnen zur Verfügung steht: Helme, Stiefel, Handschuhe, Knie-, Brust- und Ellbogenschützer. Die gesamte Ausrüstung wurde gründlich gewaschen und ist für unsere Gäste kostenlos.",
+  "hotel_title": "Unterkunft"
 }

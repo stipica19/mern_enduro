@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css';
 import { useTranslation } from 'react-i18next';
-import { imageMladen } from './ImageSlider/SlideData';
+import { imageMladen } from './data/SlideData';
+import SwiperTours from './SwiperTours';
 
 const About = () => {
   const { t } = useTranslation();
@@ -17,13 +18,13 @@ const About = () => {
           <p>{t('about_p3')}</p>
           <p>{t('about_p4')}</p>
         </div>
-
-        <img
+        <SwiperTours item={imageMladen.slice(0, 2)} />
+        {/* <img
           data-aos="fade-right"
           src={imageMladen[1].link}
           alt="enduro drift bosnien"
           className="about_image"
-        />
+        /> */}
       </div>
     </section>
   );

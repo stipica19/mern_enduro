@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "/",
-
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
     "@fortawesome/fontawesome-svg-core": "^1.3.0",

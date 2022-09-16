@@ -1,6 +1,6 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { imageMladen } from "./ImageSlider/SlideData";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { imageMladen } from '../components/data/SlideData';
 
 const TourGuide = () => {
   const { t } = useTranslation();
@@ -9,16 +9,16 @@ const TourGuide = () => {
       <div className="grid-1 container">
         <div className="card flex">
           <div className="tour-guide-text">
-            <h2>{t("tour_guide")}</h2>
-            <p>{t("tour_guide1")}</p>
+            <h2>{t('tour_guide')}</h2>
+            <p>{t('tour_guide1')}</p>
           </div>
         </div>
         <div className="card flex">
           <div className="grid-inner">
             {imageMladen.map((item, index) => (
-              <div className="item" key={item.link}>
-                <div key={item.link} className="">
-                  <img src={item.link} alt={item.text} />
+              <div className="item" key={item.url}>
+                <div key={item.url} className="">
+                  <img src={item.url} alt={item.alt} />
                 </div>
               </div>
             ))}

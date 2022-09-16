@@ -10,9 +10,8 @@ const router = express.Router();
 router.route('/').post(protect, admin, addTour);
 router.route('/').get(getAllTours);
 
-router.post('/updateSve', (req, res) => {
+router.post('/updateSve', protect, admin, (req, res) => {
   console.log('first');
-  // let t = Tour.updateMany({ $set: { tour_space: 16 } });
   Tour.updateMany({}, { tour_space: 16 }, function (err, docs) {
     if (err) {
       console.log(err);

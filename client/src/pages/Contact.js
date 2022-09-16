@@ -1,27 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from 'react-i18next';
-import Map from './Map';
-import ToastBar from './ToastBar';
-import { changeLanguage } from 'i18next';
-const location = {
-  address: 'ENDURO DRIFT',
-  lat: 43.937859851516265,
-  lng: 17.57804456819443,
-};
+import Map from '../components/Map';
+import ToastBar from '../components/ToastBar';
+
 const Contact = () => {
   const { t } = useTranslation();
-  const [email, setEmail] = useState('');
+
   const [notification, setNotification] = useState({
     message: '',
     success: '',
   });
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
-  const snackbarRef = useRef(null);
 
-  let rez = useRef(0);
+  const snackbarRef = useRef(null);
 
   const form = useRef();
 
@@ -38,7 +29,6 @@ const Contact = () => {
       .then(
         (result) => {
           console.log(result.text);
-          setLoading(false);
 
           setNotification({
             success: true,
@@ -76,7 +66,7 @@ const Contact = () => {
               <br /> Silvija Strahimira Kranjčevića,
               <br /> Gornji Vakuf-Uskoplje,
               <br />
-              Bosnia and Herzegovin, <br />
+              Bosnia and Herzegovina, <br />
               Phone: +387 63 136 095
               <br /> E-mail: endurodriftbosnien@gmail.com
             </p>
@@ -88,12 +78,7 @@ const Contact = () => {
                     <label htmlFor="NAME AND SURNAME">
                       {t('contact_name')}
                     </label>
-                    <input
-                      type="text"
-                      name="user_name"
-                      onChange={(e) => setName(e.target.value)}
-                      required
-                    />
+                    <input type="text" name="user_name" required />
                   </div>
                 </div>
                 <div className="date-form">

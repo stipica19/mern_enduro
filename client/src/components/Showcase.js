@@ -1,14 +1,14 @@
-import React from "react";
-import { SliderData } from "./ImageSlider/SlideData";
-import SlidingText from "./SlidingText/SlidingText";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Autoplay, Lazy } from "swiper";
+import React from 'react';
+import { SliderData } from './data/SlideData';
+import SlidingText from './SlidingText/SlidingText';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Autoplay, Lazy } from 'swiper';
 
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-import "swiper/css/autoplay";
-import "./ImageSlider/Slider.css";
+import 'swiper/css/autoplay';
+import './ImageSlider/Slider.css';
 
 SwiperCore.use([Navigation, Autoplay, Lazy]);
 const Showcase = () => {

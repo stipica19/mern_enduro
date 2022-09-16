@@ -1,19 +1,19 @@
 import React from 'react';
 import poderano from '../images/poderano.png';
-import image1 from '../images/b1-min.webp';
-import image3 from '../images/b3-min.webp';
-import image2 from '../images/b2-min.webp';
+import SwiperTours from './SwiperTours';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { tours } from './data/SlideData';
+
 const Tour = () => {
   const { t } = useTranslation();
+
   return (
     <section className="tours bg-light  py-3">
       <div className="tour-poderano">
         <img src={poderano} alt="enduro drift" />
       </div>
       <div className="tour-title">
-        {' '}
         <h2 data-aos="zoom-in" className="md text-center  ">
           {t('toure_title')}
         </h2>
@@ -27,12 +27,11 @@ const Tour = () => {
           <p>{t('tour1_p3')}</p>
           <p>{t('tour1_p4')}</p>
           <p>{t('tour1_p5')}</p>
-          <p>&nbsp; &nbsp;{t('tour1_p6')}</p>
+          <p>&nbsp; &nbsp; {t('tour1_p6')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p7')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p8')}</p>
           <div className="date-form">
             <Link to="/apply">
-              {' '}
               <input
                 type="submit"
                 value="BOOK NOW"
@@ -42,25 +41,12 @@ const Tour = () => {
           </div>
         </div>
 
-        <img
-          data-aos="fade-right"
-          data-aos-once="false"
-          src={image1}
-          alt="enduro drift bosnien"
-          className="about_image"
-        />
+        <SwiperTours item={tours[0].tour1} />
       </div>
       <div className="container grid">
-        <img
-          data-aos="fade-right"
-          data-aos-once="false"
-          src={image2}
-          alt="enduro drift bosnien"
-          className="about_image"
-        />
+        <SwiperTours item={tours[1].tour2} />
         <div>
           <h1>TOUR 2</h1>
-
           <p>{t('tour2_p1')}</p>
           <p>{t('tour2_p2')}</p>
           <p>{t('tour2_p3')}</p>
@@ -70,7 +56,6 @@ const Tour = () => {
           <p>&nbsp; &nbsp; {t('tour1_p7')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p8')}</p>
           <Link to="/apply">
-            {' '}
             <input
               type="submit"
               value="BOOK NOW"
@@ -90,9 +75,7 @@ const Tour = () => {
           <p>&nbsp; &nbsp;{t('tour1_p6')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p7')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p8')}</p>
-
           <Link to="/apply">
-            {' '}
             <input
               type="submit"
               value="BOOK NOW"
@@ -100,13 +83,7 @@ const Tour = () => {
             />
           </Link>
         </div>
-        <img
-          data-aos="fade-right"
-          data-aos-once="false"
-          src={image3}
-          alt="enduro drift bosnien"
-          className="about_image"
-        />
+        <SwiperTours item={tours[2].tour3} />
       </div>
     </section>
   );

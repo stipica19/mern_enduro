@@ -26,7 +26,7 @@
 
   "tour3_p1": "5 driving days",
   "tour3_p2": "- 690€ (with own motorbike)",
-  "tour3_p3": "- 1100€ (with rental bike)",
+  "tour3_p3": "- 960€ (with rental bike)",
   "tour3_p4": "- incl. : - 6 nights, breakfast, guide - excl.",
   "tour3_p5": "- Petrol (1.50 euros/1 liter)",
   "tour3_p6": "- Equipment 20 euros per day",
@@ -94,5 +94,26 @@
 
   "contact_name": "NAME AND SURNAME *",
   "contact_msg": "YOUR MESSAGE",
-  "contact_btn": "SEND"
+  "contact_btn": "SEND",
+  "rule_title": "Rules",
+  "rule_1": "- Make sure your bike is ready for tour",
+  "rule_2": "- Don't leave the trail",
+  "rule_3": "- Small First Aid Kit needed",
+  "rule_4": "- Don't search for Guide, he will come back you",
+  "rule_5": "- Follow road signes respect traffic",
+  "rule_6": "- Don't overtake your Guide",
+  "rule_7": "- Your Bike range 100km per day full tank",
+  "rule_8": "- Take minimal 1,5l water with you",
+  "rule_9": "- Take your phone with you",
+  "rule_10": "- Take some bolts with you",
+  "rule_11": "- Take metal glue with you for fixing covers...",
+  "rule_12": "- Bike tools needed",
+  "rule_13": "- If you ride with tubes, take second tube and pump",
+  "rule_14": "- Take spear break and clutch levers with you",
+  "rule_15": "- Take money for lunch",
+  "rule_16": "- In case you're not following our company rules you will be charged extra for any assistance needed",
+  "rule_17": "THANK YOU",
+  "gang_title": "Gear",
+  "gang": "If you are coming without enduro equipment you do not have to worry. We have provided you with all the right gear in all possible sizes. The gear you’ll have at your disposal: helmets, boots, gloves, knee, chest and elbow protectors. All the equipment has been thoroughly washed and is free of charge for our guests.",
+  "hotel_title": "Accommodation"
 }

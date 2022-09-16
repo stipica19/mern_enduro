@@ -1,17 +1,12 @@
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/hr';
-import ToastBar from './ToastBar';
+import ToastBar from '../components/ToastBar';
 import emailjs from '@emailjs/browser';
-import TextField from './TextField';
+import TextField from '../components/TextField';
 
 const Apply = () => {
   const { t } = useTranslation();
@@ -77,7 +72,7 @@ const Apply = () => {
 
   const getTermine = async () => {
     const data = await axios
-      .get('/api/tours/')
+      .get('https://endurodriftbosnien.com/api/tours/')
       .then((res) => {
         setTermine(res.data.filter((data) => data.tour_number < 199));
         setTermine23(
@@ -188,7 +183,6 @@ const Apply = () => {
                   <th>{t('apply_th1')}</th>
                   <th>{t('apply_th2')}</th>
                   <th>{t('apply_th3')}</th>
-
                   <th>{t('apply_th5')}</th>
                 </tr>
               </thead>
@@ -205,6 +199,7 @@ const Apply = () => {
                         </td>
 
                         <td
+                          data-tour={termine.tour_number}
                           className={`${
                             termine.tour_space === 0
                               ? 'rezervirano'
@@ -213,17 +208,11 @@ const Apply = () => {
                         >
                           {termine.tour_space !== 0 ? (
                             <p>
-                              {t('apply_yesterm')}
-
+                              {t('apply_yesterm')} &nbsp;
                               {termine.tour_space}
                             </p>
                           ) : (
-                            <p>
-                              {t('apply_noterm')}{' '}
-                              {termine.tour_number == 116 && (
-                                <p>besetzt bei Moto Druiden</p>
-                              )}
-                            </p>
+                            <p>{t('apply_noterm')} </p>
                           )}
                         </td>
                       </tr>
@@ -372,7 +361,7 @@ const Apply = () => {
                         checked={rentaBike}
                         onChange={handeleRentaBike}
                       />
-                      <span class="checkmark"></span>
+                      <span className="checkmark"></span>
                     </label>
                   </div>
                 </div>
@@ -400,7 +389,7 @@ const Apply = () => {
                       required
                       onChange={(e) => setAccept(e.target.checked)}
                     />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                   </label>
                 </div>
               </div>
