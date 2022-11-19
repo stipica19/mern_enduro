@@ -54,7 +54,7 @@ const AdminDashboard = () => {
     const vis = reviews.filter((rev) => rev._id === id);
     const visible = !vis[0].isVisible;
     let newArr = [...reviews];
-    //console.log((newArr[index].isVisible = visible));
+    newArr[index].isVisible = visible;
 
     axios.put(`api/guestbook/${id}`, newArr[index]);
     setReviews(newArr);

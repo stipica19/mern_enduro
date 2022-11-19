@@ -27,7 +27,7 @@ const Tour = () => {
           <p>{t('tour1_p3')}</p>
           <p>{t('tour1_p4')}</p>
           <p>{t('tour1_p5')}</p>
-          <p>&nbsp; &nbsp; {t('tour1_p6')}</p>
+
           <p>&nbsp; &nbsp; {t('tour1_p7')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p8')}</p>
           <div className="date-form">
@@ -52,7 +52,7 @@ const Tour = () => {
           <p>{t('tour2_p3')}</p>
           <p>{t('tour2_p4')}</p>
           <p>{t('tour2_p5')}</p>
-          <p>&nbsp; &nbsp;{t('tour1_p6')}</p>
+
           <p>&nbsp; &nbsp; {t('tour1_p7')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p8')}</p>
           <Link to="/apply">
@@ -72,7 +72,7 @@ const Tour = () => {
           <p>{t('tour3_p3')}</p>
           <p>{t('tour3_p4')}</p>
           <p>{t('tour3_p5')}</p>
-          <p>&nbsp; &nbsp;{t('tour1_p6')}</p>
+
           <p>&nbsp; &nbsp; {t('tour1_p7')}</p>
           <p>&nbsp; &nbsp; {t('tour1_p8')}</p>
           <Link to="/apply">

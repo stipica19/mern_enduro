@@ -466,6 +466,9 @@ h1 {
   padding-bottom: 50px;
   animation: slideInFromBottom 1s ease-in;
 }
+.stats.best-end {
+  padding-bottom: 0px;
+}
 .best-end .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
