@@ -1,14 +1,15 @@
-import React from 'react';
-import { SliderData } from './data/SlideData';
-import SlidingText from './SlidingText/SlidingText';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Autoplay, Lazy } from 'swiper';
+import React from "react";
+import { SliderData } from "./data/SlideData";
+import SlidingText from "./SlidingText/SlidingText";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Autoplay, Lazy } from "swiper";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 
-import 'swiper/css/autoplay';
-import './ImageSlider/Slider.css';
+import "swiper/css/autoplay";
+import "./ImageSlider/Slider.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 SwiperCore.use([Navigation, Autoplay, Lazy]);
 const Showcase = () => {
@@ -36,7 +37,7 @@ const Showcase = () => {
               <SwiperSlide key={single.image}>
                 <div className="slid">
                   <section className="slider minislider">
-                    <img
+                    <LazyLoadImage
                       className="image"
                       src={single.image}
                       alt="enduro touren bosnien"
@@ -48,18 +49,6 @@ const Showcase = () => {
                     >
                       {single.title}
                     </h1>
-                    {single.title1 && (
-                      <div className="title-2221">
-                        <h1
-                          className="title1"
-                          data-aos="fade-right"
-                          data-aos-duration="1500"
-                          data-aos-easing="ease-in-sine"
-                        >
-                          {single.title1}
-                        </h1>
-                      </div>
-                    )}
                   </section>
                 </div>
               </SwiperSlide>

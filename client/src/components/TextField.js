@@ -1,24 +1,18 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const TextField = ({ name, value, onChange, title, required }) => {
   const [touch, setTouch] = useState(false);
-  const isValid = value !== '';
+  const isValid = value !== "";
   const { t } = useTranslation();
-  const styles = {
-    popup: {
-      border: touch ? !isValid && required && '1px solid red' : null,
-    },
-  };
+
   return (
     <div className="date-form">
       <div className="form-control">
         <label>{title}</label>
         <input
           style={{
-            border: touch
-              ? !isValid && required && '1px solid red'
-              : null,
+            border: touch ? !isValid && required && "1px solid red" : null,
           }}
           type="text"
           name={name}
@@ -30,7 +24,7 @@ const TextField = ({ name, value, onChange, title, required }) => {
           ? !isValid &&
             required && (
               <span className={!isValid && `error-input`}>
-                {t('input_field')}
+                {t("input_field")}
               </span>
             )
           : null}

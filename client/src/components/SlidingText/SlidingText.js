@@ -9,7 +9,7 @@ const SlidingText = () => {
           <section className="news-message">
             <p> TERMINE</p>
             <p>FÜR</p>
-            <p>2022</p>
+            <p>2023</p>
             <p> SIND</p>
             <p>ONLINE.</p>
             <p> BOOKING</p>
@@ -22,7 +22,7 @@ const SlidingText = () => {
           <section className="news-message">
             <p>TERMINE</p>
             <p>FÜR</p>
-            <p>2022</p>
+            <p>2023</p>
             <p> SIND</p>
             <p>ONLINE.</p>
             <p> BOOKING</p>

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player";
-
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import axios from "axios";
+import Loader from "./Loader";
+const ReactPlayer = lazy(() => import("react-player"));
+
 const VideoGallery = () => {
   const [videos, setVideoURL] = useState([]);
 
@@ -25,16 +26,18 @@ const VideoGallery = () => {
     <section className="docs-main youtube">
       <div className="container grid">
         {videos.map((item) => (
-          <div className="item">
-            <div className="item-inner">
-              <ReactPlayer
-                className="react-player"
-                key={item._id}
-                url={item.youtube_url}
-                controls={true}
-              />
+          <Suspense fallback={<Loader />}>
+            <div className="item">
+              <div className="item-inner">
+                <ReactPlayer
+                  className="react-player"
+                  key={item._id}
+                  url={item.youtube_url}
+                  controls={true}
+                />
+              </div>
             </div>
-          </div>
+          </Suspense>
         ))}
       </div>
     </section>

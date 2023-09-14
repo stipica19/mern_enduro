@@ -1,7 +1,8 @@
 import React from "react";
 import saloon from "../images/saloon.jpg";
 import saraj from "../images/saraj.webp";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 const Footer = () => {
   return (
     <footer className="footer bg-dark py-3">
@@ -13,15 +14,25 @@ const Footer = () => {
             <p style={{ color: "red" }}>HARD ENDURO WORLD</p>
           </a>
           <div className="partners-img">
-            <img src={saloon} alt="enduro touren bosnien" />
-            <img src={saraj} alt="enduro touren bosnien" />
-            <img
+            <LazyLoadImage
+              src={saloon}
+              alt="enduro touren bosnien"
+              effect="blur"
+            />
+            <LazyLoadImage
+              src={saraj}
+              alt="enduro touren bosnien"
+              effect="blur"
+            />
+            <LazyLoadImage
               src="https://seeklogo.com/images/Z/zona-enduro-logo-AF7FFDA282-seeklogo.com.png"
               alt="enduro touren bosnien"
+              effect="blur"
             />
-            <img
+            <LazyLoadImage
               src="http://fork-socks.de/wp-content/uploads/2018/07/logo-ohne-de.png"
               alt="enduro touren bosnien"
+              effect="blur"
             />
           </div>
         </div>
@@ -72,7 +83,7 @@ const Footer = () => {
         </div>
         <div className="footer-title">
           <h1>ENDURO DRIFT BOSNIEN</h1>
-          <p>Copyright &copy; 2022</p>
+          <p>Copyright &copy; 2023</p>
         </div>
       </div>
     </footer>

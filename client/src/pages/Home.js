@@ -1,15 +1,15 @@
-import React from 'react';
-import About from '../components/About';
-import BestEnduro from '../components/BestEnduro';
-import Motors from '../components/Motors';
-import Showcase from '../components/Showcase';
-import Tour from '../components/Tour';
-import YouTube from '../components/YouTube';
+import React from "react";
+import Showcase from "../components/Showcase";
+import { FloatingWhatsApp } from "react-floating-whatsapp-button";
 
-import { FloatingWhatsApp } from 'react-floating-whatsapp-button';
-import 'react-floating-whatsapp-button/dist/index.css';
-import Rules from '../components/Rules';
-import Hotel from '../components/Hotel';
+import About from "../components/About";
+import BestEnduro from "../components/BestEnduro";
+
+import Motors from "../components/Motors";
+import Tour from "../components/Tour";
+import Rules from "../components/Rules";
+import Hotel from "../components/Hotel";
+import YouTube from "../components/YouTube";
 
 const Home = () => {
   return (

@@ -6,6 +6,8 @@ import prokosko from "../images/nature/prokosko.webp";
 import ramsko from "../images/nature/ramsko.webp";
 import radusa from "../images/nature/radusa.webp";
 import tour from "../images/nature/tour.jpg";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const BestEnduro = () => {
   const { t } = useTranslation();
@@ -24,30 +26,30 @@ const BestEnduro = () => {
 
         <div className="grid-4 my-4 grid text-center">
           <div>
-            <img src={prokosko} alt="prokoško jezero" />
+            <LazyLoadImage src={prokosko} alt="prokoško jezero" effect="blur" />
             <h4>Prokoško {t("jezero")}</h4>
             <p>{t("best_p6")}</p>
           </div>
 
           <div>
-            <img src={vranica} alt="enduro bosnien" />
+            <LazyLoadImage src={vranica} alt="enduro bosnien" effect="blur" />
             <h4>Vranica</h4>
             <p>{t("best_p7")}</p>
           </div>
           <div>
-            <img src={ramsko} alt="enduro bosnien" />
+            <LazyLoadImage src={ramsko} alt="enduro bosnien" effect="blur" />
             <h4>Rama {t("jezero")}</h4>
           </div>
           <div>
-            <img src={radusa} alt="enduro bosnien" />
+            <LazyLoadImage src={radusa} alt="enduro bosnien" effect="blur" />
             <h4>Raduša</h4>
           </div>
 
           <div>
-            <img src={mapa} alt="enduro bosnien" />
+            <LazyLoadImage src={mapa} alt="enduro bosnien" effect="blur" />
           </div>
           <div>
-            <img src={tour} alt="enduro bosnien" />
+            <LazyLoadImage src={tour} alt="enduro bosnien" effect="blur" />
           </div>
         </div>
       </div>

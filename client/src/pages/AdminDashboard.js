@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import ToastBar from '../components/ToastBar';
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import ToastBar from "../components/ToastBar";
 
 const AdminDashboard = () => {
-  const [clicked, setClicked] = useState('rez');
+  const [clicked, setClicked] = useState("rez");
   const [reviews, setReviews] = useState([]);
   const [applys, setApplys] = useState([]);
-  const [image, setImage] = useState('');
-  const [video, setVideo] = useState('');
+  const [image, setImage] = useState("");
+  const [video, setVideo] = useState("");
   const [notification, setNotification] = useState({
-    message: '',
-    success: '',
+    message: "",
+    success: "",
   });
   const snackbarRef = useRef(null);
 
@@ -24,7 +24,7 @@ const AdminDashboard = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get('/api/apply');
+      const { data } = await axios.get("/api/apply");
       //console.log(data);
       setApplys(data);
     } catch (error) {
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
   const getReview = async () => {
     setLoading1(true);
     try {
-      const { data } = await axios.get('/api/guestbook');
+      const { data } = await axios.get("/api/guestbook");
       // //console.log(data);
       setReviews(data);
     } catch (error) {
@@ -64,17 +64,17 @@ const AdminDashboard = () => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append("image", image);
 
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
     const { data } = axios
-      .post('/api/index/addPhoto', formData, config, {
+      .post("/api/index/addPhoto", formData, config, {
         onUploadProgress: (progressEvent) => {
           let { loaded, total } = progressEvent;
           let procent = Math.floor((loaded * 100) / total);
@@ -98,13 +98,13 @@ const AdminDashboard = () => {
     //console.log("first", video);
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
     try {
       const { data } = await axios.post(
-        '/api/index/addYouToube',
+        "/api/index/addYouToube",
         {
           video: video,
         },
@@ -123,7 +123,7 @@ const AdminDashboard = () => {
       {snackbarRef ? (
         <ToastBar ref={snackbarRef} notification={notification} />
       ) : (
-        ''
+        ""
       )}
       <div className="grid-2 admin-grid ">
         <div className="card flex">
@@ -134,7 +134,7 @@ const AdminDashboard = () => {
                 <li>
                   <button
                     className="btn btn-outline"
-                    onClick={() => setClicked('rez')}
+                    onClick={() => setClicked("rez")}
                   >
                     Evidencija rezervacija
                   </button>
@@ -142,7 +142,7 @@ const AdminDashboard = () => {
                 <li>
                   <button
                     className="btn btn-outline"
-                    onClick={() => setClicked('book')}
+                    onClick={() => setClicked("book")}
                   >
                     Evidencija guestbook-a
                   </button>
@@ -150,7 +150,7 @@ const AdminDashboard = () => {
                 <li>
                   <button
                     className="btn btn-outline"
-                    onClick={() => setClicked('photo')}
+                    onClick={() => setClicked("photo")}
                   >
                     Dodaj sliku u Galeriju
                   </button>
@@ -158,7 +158,7 @@ const AdminDashboard = () => {
                 <li>
                   <button
                     className="btn btn-outline"
-                    onClick={() => setClicked('video')}
+                    onClick={() => setClicked("video")}
                   >
                     Dodaj video u Galeriju
                   </button>
@@ -168,7 +168,7 @@ const AdminDashboard = () => {
           </div>
         </div>
         <div className="card flex">
-          {clicked === 'rez' ? (
+          {clicked === "rez" ? (
             <table className="apply-toure">
               <thead>
                 <tr>
@@ -194,15 +194,13 @@ const AdminDashboard = () => {
                       <td>{apply.mobitel}</td>
                       <td>{apply.number_person}</td>
                       <td>
-                        <Link to={`/admin-apply/${apply._id}`}>
-                          Detaljnije
-                        </Link>
+                        <Link to={`/admin-apply/${apply._id}`}>Detaljnije</Link>
                       </td>
                     </tr>
                   ))}
               </tbody>
             </table>
-          ) : clicked === 'book' ? (
+          ) : clicked === "book" ? (
             <>
               <table className="admin-guestbook">
                 <thead>
@@ -228,9 +226,7 @@ const AdminDashboard = () => {
                             name={review.name}
                             id="vidiljvo"
                             checked={review.isVisible}
-                            onChange={(e) =>
-                              handleSubmit(e, index, review._id)
-                            }
+                            onChange={(e) => handleSubmit(e, index, review._id)}
                           />
                         </td>
                       </tr>
@@ -238,7 +234,7 @@ const AdminDashboard = () => {
                 </tbody>
               </table>
             </>
-          ) : clicked === 'photo' ? (
+          ) : clicked === "photo" ? (
             <div>
               <h3>Dodaj sliku u galeriju</h3>
               <form onSubmit={submitHandler}>
@@ -257,10 +253,7 @@ const AdminDashboard = () => {
             <div>
               <h3>Dodaj video u galeriju</h3>
               <form onSubmit={submitVideoHandler}>
-                <input
-                  type="text"
-                  onChange={(e) => setVideo(e.target.value)}
-                />
+                <input type="text" onChange={(e) => setVideo(e.target.value)} />
                 <input
                   type="submit"
                   value="SPREMI"

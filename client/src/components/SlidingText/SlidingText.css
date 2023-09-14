@@ -47,4 +47,7 @@
       transform: translateX(-100%);
     }
   }
+  .news-message p:nth-child(3){
+    color: red;
+  }
  

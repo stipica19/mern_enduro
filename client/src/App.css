@@ -73,6 +73,7 @@ pre {
   margin-bottom: -70px;
   z-index: 111999;
 }
+/*
 .navbar ul li ul {
   background-color: transparent;
   visibility: hidden;
@@ -83,17 +84,17 @@ pre {
   margin-top: 2px;
   display: none;
   text-align: center;
-}
+}*/
 .navbar ul li ul li a {
   color: white;
 }
 
-.navbar ul li:hover > ul,
+/*.navbar ul li:hover > ul,
 .navbar ul li ul:hover {
   visibility: visible;
   opacity: 1;
   display: block;
-}
+}*/
 .navbar span {
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -142,7 +143,7 @@ pre {
 }
 .flags {
   padding-left: 10px;
-  width: 35px;
+ 
 }
 
 .navbar__link {
@@ -212,9 +213,11 @@ pre {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     border-radius: 0;
-    flex: 1;
+    flex: 1 1;
+    flex-direction: column;
+    align-items: flex-start;
+
   }
 
   .navbar__item:nth-child(n-1) {
@@ -274,7 +277,7 @@ pre {
     text-overflow: ellipsis;
   }
 
-  .navbar ul li ul {
+  /*.navbar ul li ul {
     background-color: transparent;
     visibility: hidden;
     opacity: 0;
@@ -283,7 +286,7 @@ pre {
     transition: all 2s ease;
     margin-top: 0.5rem;
     display: none;
-  }
+  }*/
   .navbar span {
     display: flex;
     height: 100%;
@@ -1280,6 +1283,10 @@ a .fa-youtube:hover {
   .footer .social:last-child {
     text-align: unset;
   }
+   #iframe{
+    width: 200px;
+    height: 200px;
+  }
 
   textarea {
     width: 270px;
@@ -1369,6 +1376,15 @@ a .fa-youtube:hover {
 .tour-guide-text {
   margin-top: 20px;
   background: rgba(4, 4, 4, 0.9);
+}
+.tourGuide{
+  width:100%;
+                height:100%;
+}
+.tourGuide  img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .tour-guide-text h2 {
   color: red;
@@ -1987,10 +2003,14 @@ th:last-child {
 
 /*=========LOADER=================*/
 .lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+  left: 0;
+    right: 0;
+    margin: auto;
+    /* transform: translateY(-50%); */
+    /* display: inline-block; */
+    /* position: absolute; */
+    width: 80px;
+    height: 80px;
 }
 .lds-ring div {
   box-sizing: border-box;
@@ -2002,7 +2022,7 @@ th:last-child {
   border: 8px solid #fff;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: rgb(107, 107, 107) transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;

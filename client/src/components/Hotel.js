@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from 'swiper';
-import { hotel } from './data/SlideData';
-import { useTranslation } from 'react-i18next';
+import { Pagination } from "swiper";
+import { hotel } from "./data/SlideData";
+import { useTranslation } from "react-i18next";
 
 const Hotel = () => {
   const [windowDimenion, detectHW] = useState({
@@ -24,10 +25,10 @@ const Hotel = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('resize', detectSize);
+    window.addEventListener("resize", detectSize);
 
     return () => {
-      window.removeEventListener('resize', detectSize);
+      window.removeEventListener("resize", detectSize);
     };
   }, [windowDimenion]);
   const { t } = useTranslation();
@@ -35,7 +36,7 @@ const Hotel = () => {
   return (
     <section className="hotel stats">
       <div className="container">
-        <h3 className=" text-center">{t('hotel_title')}</h3>
+        <h3 className=" text-center">{t("hotel_title")}</h3>
         <p></p>
         <Swiper
           slidesPerView={windowDimenion.winWidth < 500 ? 2 : 3}
@@ -51,7 +52,11 @@ const Hotel = () => {
             hotel.map((hotel, key) => {
               return (
                 <SwiperSlide key={key}>
-                  <img src={hotel.url} alt={hotel.alt} />
+                  <LazyLoadImage
+                    src={hotel.url}
+                    alt={hotel.alt}
+                    effect="blur"
+                  />
                 </SwiperSlide>
               );
             })}
