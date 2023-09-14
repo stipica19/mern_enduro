@@ -127,8 +127,9 @@ const AdminDashboard = () => {
       )}
       <div className="grid-2 admin-grid ">
         <div className="card flex">
-          <div className="card bg-light p-3">
-            <h3 className="my-2">MENU</h3>
+          <div className="card bg-light p-3 admin-menu">
+            <h3 className="my-2 ">MENU</h3>
+
             <nav>
               <ul>
                 <li>
@@ -184,7 +185,7 @@ const AdminDashboard = () => {
               </thead>
               <tbody>
                 {!loading &&
-                  applys.map((apply) => (
+                  applys.reverse().map((apply) => (
                     <tr key={apply._id}>
                       <td>{apply.tour_number.tour_number}</td>
                       <td>{apply.tour_type}</td>
