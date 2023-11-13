@@ -67,14 +67,14 @@ const Apply = () => {
   });
   const form = useRef();
 
-  const [termine23, setTermine23] = useState([]);
-  const [display, setDiplayForm] = useState("23");
+  const [termine, setTermine] = useState([]);
+  const [display, setDiplayForm] = useState();
 
   const getTermine = async () => {
     const data = await axios
-      .get("https://endurodriftbosnien.com/api/tours/")
+      .get("/api/tours/")
       .then((res) => {
-        setTermine23(res.data.filter((data) => data.tour_number > 199));
+        setTermine(res.data.filter((data) => data.tour_number > 299));
       })
       .catch((err) => console.log(err));
   };
@@ -154,7 +154,7 @@ const Apply = () => {
           onClick={() => setDiplayForm("23")}
           style={display === "23" ? { color: "red" } : { color: "white" }}
         >
-          &#128073; Tours 2023{" "}
+          &#128073; Tours 2024{" "}
         </p>
       </div>
 
@@ -172,7 +172,7 @@ const Apply = () => {
               </thead>
               <tbody>
                 {display === "23" &&
-                  termine23.map((termine) => (
+                  termine.map((termine) => (
                     <tr key={termine._id}>
                       <td>{termine.tour_number}</td>
                       <td>{moment(termine.checkIn_date).format("l")}</td>
