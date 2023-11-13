@@ -7,7 +7,7 @@
 /loruki-website-master
 # testing
 /coverage
-
+.env
 # production
 /build
 
