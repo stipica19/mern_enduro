@@ -7,6 +7,7 @@ import "moment/locale/hr";
 import ToastBar from "../components/ToastBar";
 import emailjs from "@emailjs/browser";
 import TextField from "../components/TextField";
+import { useMemo } from "react";
 
 const Apply = () => {
   const { t } = useTranslation();
@@ -71,14 +72,17 @@ const Apply = () => {
   const [display, setDiplayForm] = useState();
 
   const getTermine = async () => {
-    const data = await axios
-      .get("/api/tours/")
-      .then((res) => {
-        setTermine(res.data.filter((data) => data.tour_number > 299));
-      })
-      .catch((err) => console.log(err));
+    try {
+      const response = await axios.get("/api/tours/");
+      setTermine(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
+  const filteredTermine = useMemo(() => {
+    return termine.filter((data) => data.tour_number > 299);
+  }, [termine]);
   useEffect(() => {
     moment.locale("hr");
     getTermine();
@@ -146,16 +150,13 @@ const Apply = () => {
         <p>{t("apply_p1")}</p>
         <p>{t("apply_p2")} </p>
         <p>{t("apply_p3")}</p>
-
         <p>{t("apply_p5")}</p>
         <h3 style={{ color: "red" }}>{t("apply_choose")} &#128071;</h3>
 
         <p
           onClick={() => setDiplayForm("23")}
           style={display === "23" ? { color: "red" } : { color: "white" }}
-        >
-          &#128073; Tours 2024{" "}
-        </p>
+        ></p>
       </div>
 
       <div className="grid-apply container">
@@ -171,27 +172,31 @@ const Apply = () => {
                 </tr>
               </thead>
               <tbody>
-                {display === "23" &&
-                  termine.map((termine) => (
-                    <tr key={termine._id}>
-                      <td>{termine.tour_number}</td>
-                      <td>{moment(termine.checkIn_date).format("l")}</td>
-                      <td>{moment(termine.checkOut_date).format("l")}</td>
-                      <td
-                        className={`${
-                          termine.tour_space === 0 ? "rezervirano" : "slobodno"
-                        }`}
-                      >
-                        {termine.tour_space !== 0 ? (
-                          <p>
-                            {t("apply_yesterm")} {termine.tour_space}
-                          </p>
-                        ) : (
-                          <p>{t("apply_noterm")}</p>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
+                {!display &&
+                  filteredTermine
+                    .sort((a, b) => a.tour_number - b.tour_number)
+                    .map((termine) => (
+                      <tr key={termine._id}>
+                        <td>{termine.tour_number}</td>
+                        <td>{moment(termine.checkIn_date).format("l")}</td>
+                        <td>{moment(termine.checkOut_date).format("l")}</td>
+                        <td
+                          className={`${
+                            termine.tour_space === 0
+                              ? "rezervirano"
+                              : "slobodno"
+                          }`}
+                        >
+                          {termine.tour_space !== 0 ? (
+                            <p>
+                              {t("apply_yesterm")} {termine.tour_space}
+                            </p>
+                          ) : (
+                            <p>{t("apply_noterm")}</p>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           ) : (
@@ -225,14 +230,35 @@ const Apply = () => {
                   </div>{" "}
                   {touch ? !isValid && <span>{t("input_field")}</span> : null}
                 </div>{" "}
-                <TextField
-                  onChange={(e) => setTourNumber(e.target.value)}
-                  value={tour_number}
-                  name="tour_number"
-                  type="text"
-                  title={t("apply_tournumber")}
-                  required
-                />
+                <div className="date-form">
+                  <div className="form-control">
+                    <label>{t("apply_tournumber")}</label>
+                    <select
+                      selected
+                      name="tour_number"
+                      onChange={(e) => {
+                        setTourNumber(e.target.value);
+                      }}
+                      onBlur={() => setTouch(true)}
+                      required
+                    >
+                      {filteredTermine
+                        .sort((a, b) => a.tour_number - b.tour_number)
+                        .map(
+                          (termine) =>
+                            termine.tour_space > 0 && (
+                              <option
+                                key={termine.tour_number.value}
+                                value={termine.tour_number}
+                              >
+                                {termine.tour_number}
+                              </option>
+                            )
+                        )}
+                    </select>
+                  </div>{" "}
+                  {touch ? !isValid && <span>{t("input_field")}</span> : null}
+                </div>{" "}
                 <TextField
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}

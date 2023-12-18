@@ -25,7 +25,6 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const { data } = await axios.get("/api/apply");
-      //console.log(data);
       setApplys(data);
     } catch (error) {
       console.error(error.message);
@@ -36,7 +35,7 @@ const AdminDashboard = () => {
     setLoading1(true);
     try {
       const { data } = await axios.get("/api/guestbook");
-      // //console.log(data);
+
       setReviews(data);
     } catch (error) {
       console.error(error.message);

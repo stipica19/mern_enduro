@@ -3,6 +3,7 @@ import Tour from "../models/tourModel.js";
 import asyncHandler from "express-async-handler";
 
 const addNewApplyTour = asyncHandler(async (req, res) => {
+  console.log("ADD new tour");
   const {
     tour_type,
     tour_number,
@@ -20,7 +21,7 @@ const addNewApplyTour = asyncHandler(async (req, res) => {
   //provjeriti broj ture i broj slobodnih mijesta u njoj
   //zatim ukoliko ima slobodnih mjesta smanjiva se ukoliko se rezervira
   //console.log("TIP TURE : ", tour_type);
-  //console.log("BROJ TURE : ", tour_number);
+  console.log("BROJ TURE : ", tour_number);
   //console.log("BROJ LJUDI : ", number_person);
 
   //Trazimo turu pod brojem ture
@@ -35,7 +36,7 @@ const addNewApplyTour = asyncHandler(async (req, res) => {
     //  //console.log("Broj zeljenih mjesta za rezervirat : ", number_person);
 
     if (tour.tour_space >= number_person) {
-      //console.log("ima slobodnih mjesta");
+      console.log("ima slobodnih mjesta");
       await Tour.findOneAndUpdate(
         { tour_number: tour_number },
         { $set: { tour_space: tour.tour_space - number_person } }

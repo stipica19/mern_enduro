@@ -32,9 +32,6 @@ const GuestBook = () => {
   const handelSubmit = async (e) => {
     e.preventDefault();
 
-    //console.log(typeof spamRez);
-    //console.log(typeof rez.current);
-    //console.log(rez.current);
     if (spamRez === rez.current) {
       await axios.post("/api/guestbook", {
         name,
