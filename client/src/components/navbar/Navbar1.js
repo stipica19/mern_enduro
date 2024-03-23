@@ -42,7 +42,7 @@ const Navbar1 = () => {
               height="auto"
               width="70px"
               className={navbar ? "logo active" : "logo"}
-              alt="allbau"
+              alt="anmeldung"
             />
           </NavLink>
           <div className="nav-icon" onClick={handleToggle}>
