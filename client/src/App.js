@@ -9,6 +9,7 @@ import cookies from "js-cookie";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar1 from "./components/navbar/Navbar1";
 import Preloader from "./components/Preloader";
+import CookieConset from "./components/CookieConset/CookieConset";
 
 const TourGuide = lazy(() => import("./pages/TourGuide"));
 const Gallery = lazy(() => import("./pages/Gallery"));
@@ -96,7 +97,7 @@ function App() {
             </>
           )}
         </Suspense>
-
+        <CookieConset />
         <SocialMedia />
         <Footer />
       </BrowserRouter>
