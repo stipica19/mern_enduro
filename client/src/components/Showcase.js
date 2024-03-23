@@ -13,47 +13,49 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 
 SwiperCore.use([Navigation, Autoplay, Lazy]);
 const Showcase = () => {
-  const swiperOption = {
-    loop: true,
-    speed: 250,
-    spaceBetween: 0,
-    slidesPerView: 1,
-    observer: true,
-    observeParents: true,
-    lazy: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-  };
+  const swiperOptions = React.useMemo(
+    () => ({
+      loop: true,
+      speed: 250,
+      spaceBetween: 0,
+      slidesPerView: 1,
+      observer: true,
+      observeParents: true,
+      lazy: {
+        loadPrevNext: true,
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+    }),
+    []
+  );
 
   return (
     <section className="showcase">
       <SlidingText />
-      <Swiper {...swiperOption}>
-        {SliderData &&
-          SliderData.map((single, key) => {
-            return (
-              <SwiperSlide key={single.image}>
-                <div className="slid">
-                  <section className="slider minislider">
-                    <LazyLoadImage
-                      className="image"
-                      src={single.image}
-                      alt="enduro touren bosnien"
-                    />
-                    <h1
-                      className="title"
-                      data-aos="fade-up"
-                      data-aos-duration="500"
-                    >
-                      {single.title}
-                    </h1>
-                  </section>
-                </div>
-              </SwiperSlide>
-            );
-          })}
+      <Swiper {...swiperOptions}>
+        {SliderData?.map((single) => (
+          <SwiperSlide key={single.image}>
+            <div className="slid">
+              <section className="slider minislider">
+                <LazyLoadImage
+                  className="image"
+                  src={single.image}
+                  alt="enduro touren bosnien"
+                />
+                <h1
+                  className="title"
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                >
+                  {single.title}
+                </h1>
+              </section>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <div className="poderano"></div>

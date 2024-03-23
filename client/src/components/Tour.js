@@ -42,10 +42,10 @@ const Tour = () => {
           </div>
         </div>
 
-        <SwiperTours item={tours[0].tour1} effect="blur" />
+        <SwiperTours item={tours[0].tour1} />
       </div>
       <div className="container grid">
-        <SwiperTours item={tours[1].tour2} effect="blur" />
+        <SwiperTours item={tours[1].tour2} />
         <div>
           <h1>TOUR 2</h1>
           <p>{t("tour2_p1")}</p>
@@ -74,7 +74,7 @@ const Tour = () => {
             <input type="submit" value="BOOK NOW" className="btn btn-outline" />
           </Link>
         </div>
-        <SwiperTours item={tours[2].tour3} effect="blur" />
+        <SwiperTours item={tours[2].tour3} />
       </div>
     </section>
   );

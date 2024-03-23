@@ -1,12 +1,10 @@
 import "../App.css";
+import logo from "../images/logo.png";
 
 function Loader() {
   return (
-    <div className="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div className="loader-container">
+      <img className="logo" src={logo} alt="Logo" />
     </div>
   );
 }

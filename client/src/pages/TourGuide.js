@@ -4,9 +4,10 @@ import { imageMladen } from "../components/data/SlideData";
 
 const TourGuide = () => {
   const { t } = useTranslation();
+
   return (
     <section className="docs-main">
-      <div className="grid-1 container">
+      <div className="container grid-1">
         <div className="card flex">
           <div className="tour-guide-text">
             <h2>{t("tour_guide")}</h2>
@@ -15,11 +16,9 @@ const TourGuide = () => {
         </div>
         <div className="card flex">
           <div className="grid-inner">
-            {imageMladen.map((item, index) => (
-              <div className="item" key={item.url}>
-                <div key={item.url} className="tourGuide">
-                  <img src={item.url} alt={item.alt} />
-                </div>
+            {imageMladen.map((photo, index) => (
+              <div className="item" key={photo.url}>
+                <img src={photo.url} alt={photo.alt} />
               </div>
             ))}
           </div>

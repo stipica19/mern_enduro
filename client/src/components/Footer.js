@@ -1,5 +1,5 @@
 import React from "react";
-import saloon from "../images/saloon.jpg";
+import saloon from "../images/saloon.png";
 import saraj from "../images/saraj.webp";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -47,6 +47,14 @@ const Footer = () => {
           </p>
           <br />
         </div>
+        <div className="address">
+          <h4>ADDRESS : </h4>
+          <p>Silvija Strahimira Kranjcevica,</p>
+          <p>70280 - Gornji Vakuf-Uskoplje,</p>
+          <p>Bosnia and Hercegovina</p>
+        </div>
+      </div>
+      <div className=" grid-3 container grid">
         <div className="social sociall">
           <h4>FOLLOW US: </h4>
           <a href="https://www.instagram.com/enduro_drift_bosnien/">
@@ -59,31 +67,11 @@ const Footer = () => {
           <a href="https://www.youtube.com/channel/UCxanUZadIvZEfThuUJ2mB2w">
             <i className="fab fa-youtube fa-2x"></i>
           </a>
-
           <br />
-        </div>
-      </div>
-      <div className=" grid-3 container grid">
-        <div className="payment">
-          <h4>PAYMENT INSTRUCTION: </h4>
-          <p> Mladen Brnas</p>
-          <p> Silvija Strahimira Kranjcevica</p>
-          <p> Gornji Vakuf-Uskoplje</p>
-          <p>IBAN: BA39 3382 8028 2483 3544</p>
-          <p> BIC/SWIFT:UNCRBA22</p>
-          <p> Bank name: UniCredit Bank d.d. Mostar</p>
-          <p> Bank adress:Kardinala Stepinca b.b., 88000 Mostar, BiH</p>
-        </div>
-
-        <div className="address">
-          <h4>ADDRESS : </h4>
-          <p>Silvija Strahimira Kranjcevica,</p>
-          <p>70280 - Gornji Vakuf-Uskoplje,</p>
-          <p>Bosnia and Hercegovina</p>
         </div>
         <div className="footer-title">
           <h1>ENDURO DRIFT BOSNIEN</h1>
-          <p>Copyright &copy; 2023</p>
+          <p>Copyright &copy; 2024</p>
         </div>
       </div>
     </footer>

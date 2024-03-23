@@ -88,51 +88,41 @@ const Apply = () => {
     getTermine();
   }, [notification]);
 
-  const handeleRentaBike = () => {
-    setRentaBike(!rentaBike);
-  };
+  const handeleRentaBike = () => setRentaBike(prevState => !prevState);
 
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    try {
-      if (accept) {
-        setLoading(true);
-        const { data } = await axios.post("/api/apply", {
-          tour_type,
-          tour_number,
-          name,
-          address,
-          mobitel,
-          email,
-          number_person,
-          traveling,
-          rentaBike,
-          message,
-        });
-        setLoading(false);
+    if (!accept) return;
 
-        setNotification(data);
-        snackbarRef.current.show();
-        emailjs
-          .sendForm(
-            process.env.REACT_APP_YOUR_SERVICE_ID,
-            process.env.REACT_APP_YOUR_TEMPLATE_ID_APPLY,
-            form.current,
-            process.env.REACT_APP_YOUR_PUBLIC_KEY
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
-      }
+    setLoading(true);
+    try {
+      const { data } = await axios.post("/api/apply", {
+        tour_type,
+        tour_number,
+        name,
+        address,
+        mobitel,
+        email,
+        number_person,
+        traveling,
+        rentaBike,
+        message,
+      });
+      
+      setNotification(data);
+      snackbarRef.current.show();
+      
+      emailjs.sendForm(
+        process.env.REACT_APP_YOUR_SERVICE_ID,
+        process.env.REACT_APP_YOUR_TEMPLATE_ID_APPLY,
+        form.current,
+        process.env.REACT_APP_YOUR_PUBLIC_KEY
+      ).catch(console.log);
     } catch (error) {
-      setLoading(false);
       setNotification(error);
+    } finally {
+      setLoading(false);
     }
   };
   const [touch, setTouch] = useState(false);
@@ -150,7 +140,10 @@ const Apply = () => {
         <p>{t("apply_p1")}</p>
         <p>{t("apply_p2")} </p>
         <p>{t("apply_p3")}</p>
+        <p>{t("apply_p4")}</p>
         <p>{t("apply_p5")}</p>
+        <p>{t("apply_p6")}</p>
+
         <h3 style={{ color: "red" }}>{t("apply_choose")} &#128071;</h3>
 
         <p

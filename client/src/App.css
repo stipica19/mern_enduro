@@ -945,7 +945,7 @@ h1 {
 /* Footer */
 .footer {
   position: relative;
-
+ 
   background-color: #242424;
 }
 .footer-poderano {
@@ -1153,6 +1153,9 @@ a .fa-youtube:hover {
   .tours,
   .docs-head img {
     justify-self: center;
+   
+   
+
   }
 
   .features-main .grid > *:first-child,
@@ -1238,6 +1241,10 @@ a .fa-youtube:hover {
     margin-bottom: -70px;
     z-index: 999;
     background-color: black;
+  }
+  .tours{
+    background-image: none;
+    background-color: #000;
   }
   .poderano {
     display: none;
@@ -2137,4 +2144,44 @@ th:last-child {
 .swiper-pagination-bullet-active {
   --swiper-theme-color: red;
   opacity: 0.94 !important;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: 2;
+  background-color: #000;
+}
+
+.logo {
+  width: 200px; /* Prilagodite veličinu prema vašim potrebama */
+  height: auto;
+  /* Dodajte druge stilove prema vašim preferencama */
+}
+img, video, canvas {
+  overflow: hidden; /* Umjesto overflow: visible */
+}
+.preloader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index:112;
+  
+}
+
+.preloader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

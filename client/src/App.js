@@ -1,18 +1,14 @@
-import React, { useEffect, lazy, Suspense } from "react";
+import React, { useEffect, lazy, Suspense, useState } from "react";
 import "./App.css";
-
 import "./utilities.css";
-
 import AOS from "aos";
 import "aos/dist/aos.css";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import ProtectedRoute from "./components/ProtectedRoute";
-import ScrollToTop from "./components/customHooks/scrollToTop";
 import Navbar1 from "./components/navbar/Navbar1";
+import Preloader from "./components/Preloader";
 
 const TourGuide = lazy(() => import("./pages/TourGuide"));
 const Gallery = lazy(() => import("./pages/Gallery"));
@@ -23,7 +19,7 @@ const GuestBook = lazy(() => import("./pages/GuestBook"));
 const Contact = lazy(() => import("./pages/Contact"));
 const SocialMedia = lazy(() => import("./components/SocialMedia"));
 const Termine = lazy(() => import("./pages/Termine"));
-const Preloader = lazy(() => import("./components/Preloader"));
+
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const AdminApply = lazy(() => import("./components/AdminApply"));
 const Login = lazy(() => import("./pages/Login"));
@@ -46,20 +42,37 @@ AOS.init();
 
 function App() {
   const currentLanguageCode = cookies.get("i18next") || "en";
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    document.body.dir = currentLanguage.dir || "ltr";
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Postavite željeni vremenski interval (u ovom primjeru 2 sekunde)
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const language = languages.find((l) => l.code === currentLanguageCode);
+    document.body.dir = language?.dir || "ltr";
     document.title = t("app_title");
-  }, [currentLanguage, t]);
+    if (i18n) {
+      i18n.changeLanguage(currentLanguageCode);
+    }
+  }, [currentLanguageCode]);
 
   return (
     <div className="">
       <BrowserRouter>
-        <Navbar1 />
-        <div className="app">
-          <ScrollToTop>
-            <Suspense fallback={<Preloader />}>
+        <Suspense fallback={<Preloader />}>
+          {loading ? (
+            <Preloader />
+          ) : (
+            <>
+              <Navbar1 />
+
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/gallery" element={<Gallery />} />
@@ -80,13 +93,13 @@ function App() {
                   }
                 />
               </Routes>
-            </Suspense>
-          </ScrollToTop>
-        </div>
-      </BrowserRouter>
+            </>
+          )}
+        </Suspense>
 
-      <SocialMedia />
-      <Footer />
+        <SocialMedia />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
