@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import saloon from "../images/saloon.png";
 import saraj from "../images/saraj.webp";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-const Footer = () => {
+const Footer = memo(() => {
   return (
     <footer className="footer bg-dark py-3">
       <div className="footer-poderano"></div>
@@ -30,7 +30,7 @@ const Footer = () => {
               effect="blur"
             />
             <LazyLoadImage
-              src="http://fork-socks.de/wp-content/uploads/2018/07/logo-ohne-de.png"
+              src="https://fork-socks.de/wp-content/uploads/2018/07/logo-ohne-de.png"
               alt="enduro touren bosnien"
               effect="blur"
             />
@@ -76,6 +76,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

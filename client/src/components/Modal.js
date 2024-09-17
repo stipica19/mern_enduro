@@ -13,17 +13,14 @@ const Modal = ({
   return (
     <>
       <div className="overlay dismiss" onClick={handleClick}>
-        <img
-          src={`api/${clickedImg}`}
-          alt="bigger pic"
-        />
+        <img src={`api/${clickedImg}`} alt="bigger pic" />
         <span className="dismiss" onClick={handleClick}>
           X
         </span>
         <div onClick={handelRotationLeft} className="overlay-arrows_left">
           <div>
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               className="h-5 w-5"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -39,7 +36,7 @@ const Modal = ({
         <div onClick={handelRotationRight} className="overlay-arrows_right">
           <div>
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="https://www.w3.org/2000/svg"
               className="h-5 w-5"
               viewBox="0 0 20 20"
               fill="currentColor"

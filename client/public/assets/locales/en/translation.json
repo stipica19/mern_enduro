@@ -1,5 +1,5 @@
 {
-  "app_title": "Enduro Tours in Bosnia | Enduro Drift Bosnien",
+  "app_title": "Enduro Touren in Bosnien | Enduro Drift Bosnien - Entdecken Sie das Abenteuer!",
   "about_title": "TOP ENDURO VACATION",
   "about_p2": "If you want to run away from stress, escape from everyday life or you simply want top Enduro vacation for body and soul with Enduro drift Bosnian you are in the right place.",
   "about_p1": "Greetings to all ENDURO FANS",
@@ -9,7 +9,9 @@
   "tour1_p1": "3 driving days",
   "tour1_p2": "- 400€ (with own motorbike)",
   "tour1_p3": "- 750€ (with rental bike)",
-  "tour1_p4": "- incl. : - 5 nights, breakfast, guide ",
+  "tour_essen":"- Lunch €12 per day",
+  "tour_zimmer":"- Single room €15 per day",
+  "tour1_p4": "- incl. : - 4 nights, breakfast, guide ",
   "tour1_p5": "- excl. : Petrol (1.50 euros/1 liter)",
   "tour1_p6": "- Equipment 20 euros per day",
   "tour1_p7": "- excl. : Dinner in town",

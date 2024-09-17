@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/effect-cube";
 import "./ImageSlider/Slider.css";
 SwiperCore.use([EffectCube, Autoplay]);
-const SwiperTours = ({ item = [] }) => {
+const SwiperTours = React.memo(({ item = [] }) => {
   const swiperOption = {
     loop: true,
     effect: "cube",
@@ -33,6 +33,6 @@ const SwiperTours = ({ item = [] }) => {
         ))}
     </Swiper>
   );
-};
+});
 
 export default SwiperTours;

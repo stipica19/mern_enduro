@@ -1,4 +1,5 @@
-import React, { useEffect, lazy, Suspense, useState } from "react";
+import React, { useEffect, lazy, Suspense, useState, useMemo } from "react";
+import debounce from "lodash.debounce";
 import "./App.css";
 import "./utilities.css";
 import AOS from "aos";
@@ -9,8 +10,10 @@ import cookies from "js-cookie";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar1 from "./components/navbar/Navbar1";
 import Preloader from "./components/Preloader";
-import CookieConset from "./components/CookieConset/CookieConset";
 
+const CookieConset = lazy(() =>
+  import("./components/CookieConset/CookieConset")
+);
 const TourGuide = lazy(() => import("./pages/TourGuide"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const Home = lazy(() => import("./pages/Home"));
@@ -26,33 +29,52 @@ const AdminApply = lazy(() => import("./components/AdminApply"));
 const Login = lazy(() => import("./pages/Login"));
 const Footer = lazy(() => import("./components/Footer"));
 
-const languages = [
-  {
-    code: "de",
-    name: "DEUTCH",
-    country_code: "de",
-  },
-  {
-    code: "en",
-    name: "English",
-    country_code: "gb",
-  },
-];
-
-AOS.init();
-
 function App() {
+  useEffect(() => {
+    const handleInit = debounce(() => {
+      AOS.init();
+    }, 100); // Dodaj lag
+    handleInit();
+
+    return () => {
+      handleInit.cancel();
+    };
+  }, []);
+
+  const languages = useMemo(
+    () => [
+      {
+        code: "de",
+        name: "DEUTCH",
+        country_code: "de",
+      },
+      {
+        code: "en",
+        name: "English",
+        country_code: "gb",
+      },
+    ],
+    []
+  );
+
   const currentLanguageCode = cookies.get("i18next") || "en";
   const { t, i18n } = useTranslation();
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const loadResources = async () => {
+      const resources = [
+        import("./pages/Home"),
+        import("./pages/Gallery"),
+        import("./pages/Apply"),
+        import("./pages/TourGuide"),
+      ];
+      await Promise.all(resources);
       setLoading(false);
-    }, 1000); // Postavite željeni vremenski interval (u ovom primjeru 2 sekunde)
+    };
 
-    return () => clearTimeout(timer);
+    loadResources();
   }, []);
 
   useEffect(() => {
@@ -85,6 +107,7 @@ function App() {
                 <Route path="/dates-2023" element={<Termine />} />
                 <Route path="/admin-apply/:id" element={<AdminApply />} />
                 <Route path="/login" element={<Login />} />
+
                 <Route
                   path="/admin"
                   element={
@@ -97,9 +120,11 @@ function App() {
             </>
           )}
         </Suspense>
-        <CookieConset />
-        <SocialMedia />
-        <Footer />
+        <Suspense fallback={<div>Učitavanje...</div>}>
+          <CookieConset />
+          <SocialMedia />
+          <Footer />
+        </Suspense>
       </BrowserRouter>
     </div>
   );

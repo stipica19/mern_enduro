@@ -28,7 +28,7 @@ const AddTour = () => {
       checkIn_date,
       checkOut_date,
     };
-    await axios.post("", JSON.stringify(data), config);
+    await axios.post("/api/tours", JSON.stringify(data), config);
   };
   return (
     <form onSubmit={handleSubmit}>

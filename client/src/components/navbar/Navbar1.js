@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import "./Navbar.css";
-import { menuItems } from "./menuItems copy";
+import { menuItems as menuData } from "./menuItems_copy";
 import MenuItems from "./MenuItems";
 import i18next from "i18next";
 import logo from "../../images/log.png";
@@ -9,28 +9,38 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FiMenu, FiX } from "react-icons/fi";
 
-const Navbar1 = () => {
+const Navbar1 = memo(() => {
   const [navbar, setNavbar] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  const handleToggle = () => {
-    setNavbarOpen((prev) => !prev);
-  };
 
-  const changeBackground = () => {
+  const handleToggle = useCallback(() => {
+    setNavbarOpen((prev) => !prev);
+  }, []);
+
+  const changeBackground = useCallback(() => {
     if (window.scrollY >= 66) {
       setNavbar(true);
     } else {
       setNavbar(false);
     }
-  };
-  useEffect(() => {
-    changeBackground();
+  }, []);
 
+  useEffect(() => {
     window.addEventListener("scroll", changeBackground);
-  });
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, []);
+
+  const changeLanguage = (lang) => {
+    i18next.changeLanguage(lang);
+  };
+
+  // Memoiziraj menuItems
+  const menuItems = useMemo(() => menuData, [menuData]);
 
   return (
     <>
@@ -47,7 +57,7 @@ const Navbar1 = () => {
           </NavLink>
           <div className="nav-icon" onClick={handleToggle}>
             <nav className="navBar">
-              <button>
+              <button aria-label={navbarOpen ? "Close menu" : "Open menu"}>
                 {navbarOpen ? <FiX size={25} /> : <FiMenu size={25} />}
               </button>
             </nav>
@@ -85,17 +95,17 @@ const Navbar1 = () => {
                 src={flags[0].link}
                 alt="deFlag"
                 className="flags"
-                onClick={() => {
-                  i18next.changeLanguage("de");
-                }}
+                aria-label="Switch to German"
+                loading="lazy"
+                onClick={() => changeLanguage("de")}
               />
               <img
                 src={flags[1].link}
                 alt="deFlag"
+                aria-label="Switch to English"
                 className="flags"
-                onClick={() => {
-                  i18next.changeLanguage("en");
-                }}
+                loading="lazy"
+                onClick={() => changeLanguage("en")}
               />
             </li>
           </ul>
@@ -103,6 +113,6 @@ const Navbar1 = () => {
       </nav>
     </>
   );
-};
+});
 
 export default Navbar1;

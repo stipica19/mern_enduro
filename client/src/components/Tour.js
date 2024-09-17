@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import poderano from "../images/poderano.png";
 import SwiperTours from "./SwiperTours";
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import { tours } from "./data/SlideData";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import "react-floating-whatsapp-button/dist/index.css";
-const Tour = () => {
+const Tour = memo(() => {
   const { t } = useTranslation();
 
   return (
@@ -27,6 +27,8 @@ const Tour = () => {
           <p>{t("tour1_p1")}</p>
           <p>{t("tour1_p2")}</p>
           <p>{t("tour1_p3")}</p>
+          <p>{t("tour_essen")}</p>
+          <p>{t("tour_zimmer")}</p>
           <p>{t("tour1_p4")}</p>
 
           <p>&nbsp; &nbsp; {t("tour1_p7")}</p>
@@ -51,6 +53,8 @@ const Tour = () => {
           <p>{t("tour2_p1")}</p>
           <p>{t("tour2_p2")}</p>
           <p>{t("tour2_p3")}</p>
+          <p>{t("tour_essen")}</p>
+          <p>{t("tour_zimmer")}</p>
           <p>{t("tour2_p4")}</p>
 
           <p>&nbsp; &nbsp; {t("tour1_p7")}</p>
@@ -66,6 +70,8 @@ const Tour = () => {
           <p>{t("tour3_p1")}</p>
           <p>{t("tour3_p2")}</p>
           <p>{t("tour3_p3")}</p>
+          <p>{t("tour_essen")}</p>
+          <p>{t("tour_zimmer")}</p>
           <p>{t("tour3_p4")}</p>
 
           <p>&nbsp; &nbsp; {t("tour1_p7")}</p>
@@ -78,6 +84,6 @@ const Tour = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Tour;

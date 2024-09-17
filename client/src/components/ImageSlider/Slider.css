@@ -112,7 +112,9 @@
   .image {
     display: block;
     max-width: 100%;
-    height: unset;
+    height: unset;        
+    margin-top: 60px;
+    
   }
   .right-arrow,
   .left-arrow {

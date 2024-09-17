@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Modal from '../components/Modal';
-import axios from 'axios';
+import React, { useState } from "react";
+import Modal from "../components/Modal";
+import axios from "axios";
 
-import useInfiniteScroll from '../components/customHooks/useInfiniteScroll';
-import useFetch from '../components/customHooks/useFetch';
-import Loader from '../components/Loader';
-import { useSelector } from 'react-redux';
+import useInfiniteScroll from "../components/customHooks/useInfiniteScroll";
+import useFetch from "../components/customHooks/useFetch";
+
+import { useSelector } from "react-redux";
 const AboutUS = () => {
   const { loadMoreRef, skip } = useInfiniteScroll();
   const { loading, photos, isEnd } = useFetch(skip);
@@ -101,11 +101,12 @@ const AboutUS = () => {
           <div className="grid-inner">
             <div className="ga">
               <div className="grid-container">{displayPhoto}</div>
-              <div ref={loadMoreRef}>
-                {!loading && !isEnd && <Loader />}
-              </div>
             </div>
-
+            <div ref={loadMoreRef}>
+              {/* Umjesto prikaza Loader-a, dodajemo poruku ili ne prikazujemo ništa */}
+              {loading && <p>Loading...</p>}
+              {isEnd && <p></p>}
+            </div>
             <div>
               {clickedImg && (
                 <Modal

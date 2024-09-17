@@ -1,53 +1,78 @@
-.scroll-text {
-    position: absolute;
+
+
+
+  .scroll-text {
+  position: absolute;
     top :100px;
     height: 50px;
     background-color: transparent;
     color: white;
     font-family: helvetica;
     text-transform: uppercase;
-    overflow-x: hidden;
+    
     z-index: 123;
     border-radius: 10px;
   }
+  
   .scroll-text div {
+
     display: flex;
     flex-wrap: nowrap;
     white-space: nowrap;
     justify-content: space-between;
     min-width: 100%;
-    
+
+   
+    animation: slide 20s linear infinite; /* Kontrolira brzinu i neprekidno klizanje */
   }
-  .scroll-text div .news-message {
+  
+  .news-message {
     margin-left: 200px;
     display: flex;
     flex-shrink: 0;
     height: 50px;
     align-items: center;
-    animation: slide-left 10s linear infinite;
+    animation: slide-left 15s linear infinite;
+    white-space: nowrap;
+    padding-right: 120px; /* Razmak između sekcija */
   }
-
-  .scroll-text div .news-message p {
-    font-size: 1.0em;
-    font-weight: 100;
-    padding-left: 0.5em;
+  
+  .news-message p {
+    margin: 0 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
   }
-  @media screen and (max-width: 600px) {
-   .showcase .scroll-text{
-     top:65px
-   }
-  }
-  @keyframes slide-left {
-    from {
-      -webkit-transform: translateX(100%);
+  
+  /* Animacija za pomicanje teksta */
+  @keyframes slide {
+    0% {
       transform: translateX(100%);
     }
-    to {
-      -webkit-transform: translateX(-100%);
+    100% {
       transform: translateX(-100%);
     }
   }
-  .news-message p:nth-child(3){
-    color: red;
-  }
+
+  @media screen and (max-width: 600px) {
+    .showcase .scroll-text{
+      top:65px
+    }
+   }
+   @keyframes slide-left {
+     from {
+       -webkit-transform: translateX(100%);
+       transform: translateX(100%);
+     }
+     to {
+       -webkit-transform: translateX(-100%);
+       transform: translateX(-100%);
+     }
+   }
+   .news-message p:nth-child(3){
+     color: red;
+   }
+ 
+  
+
  

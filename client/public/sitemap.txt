@@ -1,3 +1,0 @@
-apply
-gallery
-dates-2023

@@ -4,11 +4,7 @@ export const SliderData = [
     title: "DRIFT ON LIFE IS SHORT",
     title1: "Für dieses Jahr Rabatt -10%",
   },
-  {
-    image: "images/slider3.webp",
-    title: "ENDURO DRIFT BOSNIEN",
-    title1: "Für dieses Jahr Rabatt -10%",
-  },
+
   {
     image: "images/slider2.webp",
     title: "DRIFT ON LIFE IS SHORT",

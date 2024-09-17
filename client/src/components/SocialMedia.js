@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const Showcase = () => {
+const Showcase = memo(() => {
   return (
     <div className="icon-bar">
       <a href="https://www.instagram.com/enduro_drift_bosnien/">
@@ -14,6 +14,6 @@ const Showcase = () => {
       </a>
     </div>
   );
-};
+});
 
 export default Showcase;

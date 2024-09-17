@@ -130,45 +130,13 @@ pre {
 /*
     This is the container for all the navbar links ( <ul> )
     */
-.navbar__list {
-  display: flex;
-  list-style: none;
-  align-items: center;
 
-  margin-right: 50px;
-}
-
-.navbar__item {
-  white-space: nowrap;
-}
 .flags {
   padding-left: 10px;
  
 }
 
-.navbar__link {
-  font-size: 0.85rem;
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  padding: 10px;
-  margin: 0px 5px;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  border-color: transparent;
-  transition: 250ms;
-  font-weight: 600;
-}
 
-.navbar__link:hover {
-  color: rgb(228, 0, 0);
-  transition: 250ms;
-}
-.navbar__menu {
-  color: white;
-  display: none;
-  cursor: pointer;
-}
 @media screen and (max-width: 800px) {
   .navbar .container {
     margin-bottom: 0px;
@@ -177,68 +145,22 @@ pre {
     background-color: black;
     opacity: 1;
   }
-  .navbar__list {
-    margin-top: 0px;
-  }
-  .navbar__list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    position: absolute;
-    transition: all 0.5s ease;
-  }
-  .navbar__list--active {
-    left: 0;
-    top: 70px;
-  }
+  
 
   .navbar .logo {
     margin-top: 0px;
   }
 
-  .navbar__menu {
-    display: block;
-    position: absolute;
-    right: 20px;
-  }
+  
   .navbar .logo {
     margin-top: 20px;
     width: 70px;
   }
-  .navbar__item {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    border-radius: 0;
-    flex: 1 1;
-    flex-direction: column;
-    align-items: flex-start;
+  
 
-  }
+  
 
-  .navbar__item:nth-child(n-1) {
-    background-color: #000;
-  }
-
-  .navbar__link {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    border-width: 0px;
-    background-color: black;
-    opacity: 1;
-  }
-
-  .navbar__link:hover {
-    border-width: 0px;
-  }
+  
   .flags {
     width: 40px;
     object-fit: contain;
