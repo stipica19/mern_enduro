@@ -48,23 +48,22 @@ const addPhoto = asyncHandler(async (req, res) => {
 });
 
 const getPhoto = asyncHandler(async (req, res) => {
-  //console.log("GET GALLERY");
-
   const photoCount = await Gallery.countDocuments();
   const skip = req.query.skip ? Number(req.query.skip) : 0;
   const DEFAULT_LIMIT = 5;
 
-  //console.log(photoCount - DEFAULT_LIMIT - (skip - 1));
-  //console.log("skip ===========", skip);
+  // Izračunajte vrijednost za skip s osiguranjem da je >= 0
+  const calculatedSkip = Math.max(0, photoCount - DEFAULT_LIMIT - (skip - 1));
 
   const photos = await Gallery.find({})
-    .skip(photoCount - DEFAULT_LIMIT - (skip - 1)) // 21-5-0=16  21-5-4 = 11   21-5-9=6  21-5-14=1
+    .skip(calculatedSkip)
     .limit(DEFAULT_LIMIT);
-  if (photos) {
+
+  if (photos.length > 0) {
     res.json(photos);
   } else {
-    res.status(401);
-    throw new Error("Invalid photo");
+    res.status(404); // Promijenjen status u 404 za "Not Found"
+    throw new Error("No photos found");
   }
 });
 

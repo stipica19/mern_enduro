@@ -1,17 +1,32 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, {
+  useState,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useEffect,
+} from "react";
 import "../App.css";
 
 const ToastBar = forwardRef((props, ref) => {
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const timeoutRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     show() {
       setShowSnackbar(true);
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setShowSnackbar(false);
       }, 3000);
     },
   }));
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div
