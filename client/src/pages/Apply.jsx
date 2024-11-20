@@ -69,24 +69,26 @@ const Apply = () => {
   const form = useRef();
 
   const [termine, setTermine] = useState([]);
-  const [display, setDiplayForm] = useState();
-
-  const getTermine = async () => {
-    try {
-      const response = await axios.get("/api/tours/");
-      setTermine(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [loadingTabele, setLoadingTabele] = useState(true);
 
   const filteredTermine = useMemo(() => {
     return termine.filter((data) => data.tour_number > 299);
   }, [termine]);
+  // Preuzimanje termina sa servera
   useEffect(() => {
-    moment.locale("hr");
+    const getTermine = async () => {
+      try {
+        const response = await axios.get("/api/tours/");
+        setTermine(response.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingTabele(false); // Učitavanje završeno
+      }
+    };
+
     getTermine();
-  }, [notification]);
+  }, []);
 
   const handeleRentaBike = () => setRentaBike((prevState) => !prevState);
 
@@ -113,14 +115,22 @@ const Apply = () => {
       setNotification(data);
       snackbarRef.current.show();
 
-      emailjs
+      setTermine((prevTermine) =>
+        prevTermine.map((termine) =>
+          termine.tour_number === tour_number
+            ? { ...termine, tour_space: termine.tour_space - 1 } // Smanji dostupna mesta
+            : termine
+        )
+      );
+
+      /* emailjs
         .sendForm(
           import.meta.env.VITE_YOUR_SERVICE_ID,
           import.meta.env.VITE_YOUR_TEMPLATE_ID_APPLY,
           form.current,
           import.meta.env.VITE_YOUR_PUBLIC_KEY
         )
-        .catch(console.log);
+        .catch(console.log);*/
     } catch (error) {
       setNotification(error);
     } finally {
@@ -147,16 +157,15 @@ const Apply = () => {
         <p>{t("apply_p6")}</p>
 
         <h3 style={{ color: "red" }}>{t("apply_choose")} &#128071;</h3>
-
-        <p
-          onClick={() => setDiplayForm("23")}
-          style={display === "23" ? { color: "red" } : { color: "white" }}
-        ></p>
       </div>
 
       <div className="grid-apply container">
         <div className="card flex">
-          {!loading ? (
+          {loadingTabele ? (
+            <div className="preloader">
+              <p></p>
+            </div>
+          ) : (
             <table className="moto-date">
               <thead>
                 <tr>
@@ -167,35 +176,31 @@ const Apply = () => {
                 </tr>
               </thead>
               <tbody>
-                {!display &&
-                  filteredTermine
-                    .sort((a, b) => a.tour_number - b.tour_number)
-                    .map((termine) => (
-                      <tr key={termine._id}>
-                        <td>{termine.tour_number}</td>
-                        <td>{moment(termine.checkIn_date).format("l")}</td>
-                        <td>{moment(termine.checkOut_date).format("l")}</td>
-                        <td
-                          className={`${
-                            termine.tour_space === 0
-                              ? "rezervirano"
-                              : "slobodno"
-                          }`}
-                        >
-                          {termine.tour_space !== 0 ? (
-                            <p>
-                              {t("apply_yesterm")} {termine.tour_space}
-                            </p>
-                          ) : (
-                            <p>{t("apply_noterm")}</p>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
+                {filteredTermine
+                  .sort((a, b) => a.tour_number - b.tour_number)
+                  .map((termine) => (
+                    <tr key={termine._id}>
+                      <td>{termine.tour_number}</td>
+                      <td>{moment(termine.checkIn_date).format("l")}</td>
+                      <td>{moment(termine.checkOut_date).format("l")}</td>
+                      <td
+                        className={`${
+                          termine.tour_space === 0 ? "rezervirano" : "slobodno"
+                        }`}
+                      >
+                        {termine.tour_space !== 0 ? (
+                          <p>
+                            {t("apply_yesterm")} {termine.tour_space}{" "}
+                            {t("apply_yesterm2")}
+                          </p>
+                        ) : (
+                          <p>{t("apply_noterm")}</p>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
-          ) : (
-            "Loading..."
           )}
         </div>
 

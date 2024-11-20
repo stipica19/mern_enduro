@@ -16,19 +16,13 @@ const Showcase = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-    checkMobile();
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    const handleResize = () => setIsMobile(mediaQuery.matches);
 
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
+    handleResize();
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
   }, []);
 
   const swiperOptions = React.useMemo(
@@ -36,19 +30,17 @@ const Showcase = () => {
       loop: true,
       speed: 250,
       spaceBetween: 0,
-      slidesPerView: 1,
       observer: true,
       observeParents: true,
       preloadImages: false,
-      lazy: {
-        loadPrevNext: true,
-      },
+      slidesPerView: isMobile ? 1 : 1,
       autoplay: {
         delay: 6000,
         disableOnInteraction: false,
+        pauseOnMouseEnter: true, // Pauza na hover
       },
     }),
-    []
+    [isMobile]
   );
 
   return (

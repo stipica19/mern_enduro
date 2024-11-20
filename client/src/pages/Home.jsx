@@ -2,8 +2,8 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import Showcase from "../components/Showcase";
 import Preloader from "../components/Preloader";
 // Lazy učitavanje ostalih komponenti
-const About = lazy(() => import("../components/About"));
-const Tour = lazy(() => import("../components/Tour"));
+import About from "../components/About";
+import Tour from "../components/Tour";
 const BestEnduro = lazy(() => import("../components/BestEnduro"));
 const Hotel = lazy(() => import("../components/Hotel"));
 const Motors = lazy(() => import("../components/Motors"));
@@ -29,17 +29,11 @@ const Home = () => {
           phoneNumber="+38763136095"
           accountName="Enduro Drift Bosnien"
           avatar="../public/log.png"
-          autoOpenTimeout={5000}
           zIndex={10000}
         />
       )}
-
-      <Suspense fallback={<Preloader />}>
-        <About />
-      </Suspense>
-      <Suspense fallback={<Preloader />}>
-        <Tour />
-      </Suspense>
+      <About />
+      <Tour />
       <Suspense fallback={<Preloader />}>
         <BestEnduro />
       </Suspense>

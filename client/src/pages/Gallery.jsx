@@ -8,32 +8,24 @@ import useFetch from "../components/customHooks/useFetch";
 import { useSelector } from "react-redux";
 const Gallery = () => {
   const { loadMoreRef, skip } = useInfiniteScroll();
-  const { loading, photos: initialPhotos, isEnd } = useFetch(skip);
+  const { loading, photos, isEnd } = useFetch(skip);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  useEffect(() => {
-    setPhotos(initialPhotos);
-  }, [initialPhotos]);
-
-  const handleDelete = async (photoId) => {
-    try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      };
-      await axios.delete(`/api/index/deletePhoto/${photoId}`, config);
-
-      setPhotos((prevPhotos) =>
-        prevPhotos.filter((photo) => photo._id !== photoId)
-      );
-    } catch (error) {
-      console.error("Failed to delete photo", error);
-    }
+  const handleDelete = (photoId) => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const deletePhoto = axios.delete(
+      `/api/index/deletePhoto/${photoId}`,
+      config
+    );
+    window.location.reload(false);
   };
 
-  const displayPhoto = initialPhotos.map((photo, index) => {
+  const displayPhoto = photos.map((photo, index) => {
     return (
       <>
         <div key={photo._id} className="delete-x">

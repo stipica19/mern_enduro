@@ -108,7 +108,6 @@ const MenuItems = ({ handleToggle, items, depthLevel }) => {
         </>
       ) : (
         <Link to={items.url} onClick={handleToggle}>
-          {" "}
           {t(items.label)}
         </Link>
       )}

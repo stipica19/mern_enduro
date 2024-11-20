@@ -1,35 +1,45 @@
 .navbar {
-  background-color: transparent;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
   position: sticky;
-  top: 0;
+  top: 0px;
+  height: 70px;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: -70px;
   z-index: 20;
 }
+.navbar.active {
+  background-color: black;
+  opacity: 0.8;
+}
 
-.nav-container {
+.navbar-container {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 80px;
-  max-width: 1500px;
+  position: relative;
+}
+
+.navbar-logo {
+  position: absolute;
+  left: 20px;
+}
+
+.navbar-logo .active {
+  height: 70px;
+  width: auto;
+  margin-top: -15px;
+}
+.flags {
+  display: flex;
+}
+.flags img {
+  margin: 5px;
 }
 nav a,
-.nav-container{
+.nav-container {
   line-height: unset;
-}
-.nav-logo {
-  color: #ed6c02;
-  align-items: center;
-  margin-left: 25px;
-  margin-right: 40px;
-  cursor: pointer;
-  text-decoration: none;
-  
 }
 
 .nav-menu {
@@ -38,7 +48,6 @@ nav a,
   text-align: center;
   align-items: center;
 }
-
 .nav-links {
   color: #121212;
   text-decoration: none;
@@ -60,11 +69,10 @@ nav a,
   background: black;
   color: white;
   font-weight: 900;
- 
 }
 
 .nav-item:after {
-  content: '';
+  content: "";
   display: block;
   height: 3px;
   width: 0;
@@ -72,49 +80,26 @@ nav a,
   transition: width 0.7s ease, background-color 0.5s ease;
 }
 
-.nav-item:hover:after {
-  width: 100%;
-  background: #ed6c02;
-}
-
-.nav-item .active {
-  color: #ed6c02;
-  font-weight: 600;
-}
-
 .nav-icon {
   display: none;
 }
-.headerfix .email {
-  margin-left: auto;
-}
-.headerfix a {
-  display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
-  align-items: center;
-}
+
 .menu-items {
   font-size: 16px;
   position: relative;
   text-transform: uppercase;
 }
-.menu-items a, .menu-items button {
+.menu-items a,
+.menu-items button {
   color: inherit;
   font-size: inherit;
   width: 100%;
 }
 
-.menu-items.flags{
-  display: flex;
-    flex-direction: row;
-
-}
 .menu-items img {
-  display: flex; 
-   width: 40px;
-    object-fit: contain;
-   
+  display: flex;
+  width: 30px;
+  object-fit: contain;
 }
 .menu-items button {
   align-items: center;
@@ -126,8 +111,9 @@ nav a,
   font-size: inherit;
   width: 100%;
 }
-.menu-items button, .menu-items>a {
-  padding: 0.5rem 1rem;
+.menu-items button,
+.menu-items > a {
+  padding: 0.7rem 1rem;
   text-align: left;
 }
 .menu-items a {
@@ -153,10 +139,10 @@ button span {
 }
 
 .dropdown {
-  
-  box-shadow: 0 10px 15px -3px rgb(46 41 51 / 8%), 0 4px 6px -2px rgb(71 63 79 / 16%);
+  box-shadow: 0 10px 15px -3px rgb(46 41 51 / 8%),
+    0 4px 6px -2px rgb(71 63 79 / 16%);
   display: none;
-  font-size: .875rem;
+  font-size: 0.875rem;
   left: auto;
   list-style: none;
   min-width: 10rem;
@@ -169,53 +155,61 @@ button span {
   display: block;
 }
 
-
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .navbar .logo {
     width: 80px;
-}
-.menu-items.flags{
-  
-    flex-direction: column;
-
-}
-.menu-items .dropdown {
-  position: static;
-}
-.menu-items {
+  }
+  .menu-items .flags {
+    margin-bottom: 20px;
+  }
+  .menu-items .dropdown {
+    position: static;
+  }
+  .menu-items {
     width: 100%;
-}
-.navbar {
+  }
+  .navbar {
     position: sticky;
     top: 0px;
-    
+
     background-color: transparent;
     opacity: 1;
-    
+
     z-index: 999;
     background-color: black;
-}
+  }
 }
 
 @media screen and (max-width: 960px) {
-  .navbar{
+  .navbar {
     height: 80px;
   }
-  .headerfix.fix-navbar {
-    padding-left: 5px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-right: 5px;
+  .navbar.active {
+    opacity: 1;
   }
-  .headerfix .email {
-    margin-right: auto;
+  .menu-items .flags {
+    display: flex;
+    margin-left: 15px;
+    align-items: center;
   }
-  .headerfix .tel {
-    margin-left: auto;
+
+  .menu-items .flags .flag {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
-  .headerfix p:first-child {
-    display: none;
+  .menu-items button,
+  .menu-items > a {
+    padding: 1rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 25, 25, 0.4);
   }
+  .navbar-logo .active {
+    height: unset;
+    margin-top: unset;
+  }
+
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -256,97 +250,11 @@ button span {
     width: 100%;
     display: table;
   }
-
   .nav-icon {
     display: block;
-    /* position: absolute; */
-    /* top: 0; */
-    /* right: 0px; */
-    /* transform: translate(-100%, 60%); */
+    position: absolute;
+    right: 0;
     font-size: 2.3rem;
-    cursor: pointer;
-    color: #ed6c02;
     margin-right: 15px;
   }
-}
-
-.profile-container {
-  position: absolute;
-  right: 0;
-
-  padding: 8px 15px;
-  display: flex;
-  justify-content: flex-endl;
-}
-.profile-details {
-  display: flex;
-  align-items: center;
-}
-
-.profile-details ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 15px 0 0;
-  text-align: right;
-  font-size: 14px;
-  color: #979797;
-}
-.profile-details li {
-  border: 0;
-}
-.profile-details li a {
-  font-size: 16px;
-}
-.profile-navigation-icon {
-  height: 32px;
-  width: 32px;
-  border: 2px solid;
-  background-color: #ffcd00;
-}
-.profile-navigation-icon,
-.profile-navigation-icon img {
-  height: 48px;
-  width: 48px;
-}
-
-.profile-navigation {
-  position: absolute;
-  background-color: #121212;
-  top: 80px;
-  max-width: 220px;
-  width: 70%;
-}
-.profile-navigation {
-  right: 0;
-}
-.profile-navigation ul {
-  text-align: right;
-}
-.profile-navigation ul {
-  align-self: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.profile-navigation.active {
-  display: none;
-}
-.headerfix {
-  height: 32px;
-  background-color: #ed6c02;
-  padding-left: 80px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-right: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-  font-weight: 500;
-  font-size: 12px;
-}
-.headerfix a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
 }

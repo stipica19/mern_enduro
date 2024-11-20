@@ -4,16 +4,14 @@ import "./App.css";
 import "./utilities.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import cookies from "js-cookie";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar1 from "./components/navbar/Navbar1";
 import Preloader from "./components/Preloader";
+import CookieConset from "./components/CookieConset/CookieConset";
 
-const CookieConset = lazy(() =>
-  import("./components/CookieConset/CookieConset")
-);
 const TourGuide = lazy(() => import("./pages/TourGuide"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const Home = lazy(() => import("./pages/Home"));
@@ -21,16 +19,14 @@ const Apply = lazy(() => import("./pages/Apply"));
 const VideoGallery = lazy(() => import("./components/VideoGallery"));
 const GuestBook = lazy(() => import("./pages/GuestBook"));
 const Contact = lazy(() => import("./pages/Contact"));
-const SocialMedia = lazy(() => import("./components/SocialMedia"));
 const Termine = lazy(() => import("./pages/Termine"));
-
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const AdminApply = lazy(() => import("./components/AdminApply"));
 const Login = lazy(() => import("./pages/Login"));
-const Footer = lazy(() => import("./components/Footer"));
 
+import Footer from "./components/Footer";
+import SocialMedia from "./components/SocialMedia";
 function App() {
-  console.log("App component is rendering");
   useEffect(() => {
     const handleInit = debounce(() => {
       AOS.init();
@@ -64,7 +60,6 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("first");
     const loadResources = async () => {
       const resources = [
         import("./pages/Home"),
@@ -106,7 +101,7 @@ function App() {
                 <Route path="/guest-book" element={<GuestBook />} />
                 <Route path="/apply" element={<Apply />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/dates-2023" element={<Termine />} />
+                <Route path="/dates-2025" element={<Termine />} />
                 <Route path="/admin-apply/:id" element={<AdminApply />} />
                 <Route path="/login" element={<Login />} />
 
@@ -118,15 +113,14 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </>
           )}
         </Suspense>
-        <Suspense fallback={<div>Učitavanje...</div>}>
-          <CookieConset />
-          <SocialMedia />
-          <Footer />
-        </Suspense>
+        <CookieConset />
+        <SocialMedia />
+        <Footer />
       </BrowserRouter>
     </div>
   );

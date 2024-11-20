@@ -1,11 +1,13 @@
-FROM node:18.17.1 as build
+FROM node:18.17.1 AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN npm install --legacy-peer-deps  # Dodaj ovu opciju
+RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
 
+# Faza posluživanja
 FROM nginx:alpine
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
+# Kopiraj build fajlove iz prve faze
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

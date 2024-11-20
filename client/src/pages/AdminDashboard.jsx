@@ -49,7 +49,6 @@ const AdminDashboard = () => {
   }, []);
 
   const handleSubmit = (e, index, id) => {
-    //console.log(index);
     const vis = reviews.filter((rev) => rev._id === id);
     const visible = !vis[0].isVisible;
     let newArr = [...reviews];
@@ -77,16 +76,13 @@ const AdminDashboard = () => {
         onUploadProgress: (progressEvent) => {
           let { loaded, total } = progressEvent;
           let procent = Math.floor((loaded * 100) / total);
-          //console.log("aaa"`${loaded}`);
         },
       })
       .then((res) => {
-        //console.log(res.data);
         setNotification(res.data);
         snackbarRef.current.show();
       })
       .catch((err) => {
-        //console.log(err);
         setNotification(err);
         snackbarRef.current.show();
       });
@@ -94,7 +90,7 @@ const AdminDashboard = () => {
 
   const submitVideoHandler = async (e) => {
     e.preventDefault();
-    //console.log("first", video);
+
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -110,7 +106,7 @@ const AdminDashboard = () => {
 
         config
       );
-      //console.log(data);
+
       setNotification(data);
       snackbarRef.current.show();
     } catch (error) {
@@ -128,7 +124,6 @@ const AdminDashboard = () => {
         <div className="card flex">
           <div className="card bg-light p-3 admin-menu">
             <h3 className="my-2 ">MENU</h3>
-
             <nav>
               <ul>
                 <li>
