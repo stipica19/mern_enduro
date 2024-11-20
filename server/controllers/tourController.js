@@ -92,7 +92,7 @@ const addTour = asyncHandler(async (req, res) => {
 const getAllTours = asyncHandler(async (req, res) => {
   // Kreiramo trenutni datum i datum koji je limitiran
   const currentDate = new Date();
-  const limitDate = new Date("2023-12-12T18:00:00.000Z");
+  const limitDate = new Date("2025-12-12T18:00:00.000Z");
 
   // Pretražujemo ture koje imaju checkOut_date između trenutnog i krajnjeg datuma
   const tours = await Tour.find({
