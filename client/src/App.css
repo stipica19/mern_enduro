@@ -1123,6 +1123,9 @@ a .fa-youtube:hover {
 .gallery {
   z-index: 4;
 }
+.gallery .container {
+  overflow: hidden;
+}
 .youtube .grid {
   display: grid;
 

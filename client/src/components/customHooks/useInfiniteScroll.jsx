@@ -1,16 +1,22 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 
-function useInfiniteScroll() {
+function useInfiniteScroll(isEnd) {
   const [skip, setSkip] = useState(1);
   const loadMoreRef = useRef(null);
 
-  const handleObserver = useCallback((entries) => {
-    const [target] = entries;
-    if (target.isIntersecting) {
-      //console.log("skip=============", skip);
-      setSkip((prev) => prev + 5);
-    }
-  }, []);
+  const handleObserver = useCallback(
+    (entries) => {
+      const [target] = entries;
+      if (isEnd) {
+        console.log("End reached, stopping observer");
+        return; // Prekini ako je kraj
+      }
+      if (target.isIntersecting) {
+        setSkip((prev) => prev + 5);
+      }
+    },
+    [isEnd] // Provjerava uvijek najnoviju vrijednost `isEnd`
+  );
 
   useEffect(() => {
     const option = {
@@ -22,6 +28,10 @@ function useInfiniteScroll() {
     const observer = new IntersectionObserver(handleObserver, option);
 
     if (loadMoreRef.current) observer.observe(loadMoreRef.current);
+
+    return () => {
+      if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
+    };
   }, [handleObserver]);
 
   return { loadMoreRef, skip };

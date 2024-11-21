@@ -47,34 +47,27 @@ const addPhoto = asyncHandler(async (req, res) => {
   });
 });
 const getPhoto = asyncHandler(async (req, res) => {
+  const DEFAULT_LIMIT = 5; // Broj slika koje se prikazuju po stranici
+  const skip = req.query.skip ? Number(req.query.skip) : 0;
+  console.log("first");
+  // Broj ukupnih dokumenata u kolekciji
+  const photoCount = await Gallery.countDocuments();
+
+  // Izračunaj početni indeks za dohvaćanje slika
+  const startIndex = Math.max(0, photoCount - DEFAULT_LIMIT - (skip - 1));
+  if (skip >= photoCount) {
+    return res.json([]); // Povratak praznog niza
+  }
   try {
-    const photoCount = await Gallery.countDocuments();
-    const skip = req.query.skip ? Number(req.query.skip) : 0;
-    const DEFAULT_LIMIT = 5;
+    const photos = await Gallery.find({}).skip(startIndex).limit(DEFAULT_LIMIT);
 
-    // Proveri da `skip` ne prelazi broj dostupnih dokumenata
-    if (skip >= photoCount) {
-      return res
-        .status(400)
-        .json({ message: "Skip value exceeds photo count" });
-    }
-
-    // Izračunaj vrednost `skip` bez negativnih vrednosti
-    const adjustedSkip = Math.max(0, skip);
-
-    const photos = await Gallery.find({})
-      .sort({ _id: -1 }) // Sortiraj od najnovijih ka najstarijim
-      .skip(adjustedSkip)
-      .limit(DEFAULT_LIMIT);
-
-    // Proveri da li su pronađene fotografije
     if (photos.length > 0) {
-      res.status(200).json(photos);
+      res.json(photos);
     } else {
-      res.status(200).json([]); // Vraća prazan niz ako nema fotografija
+      res.status(404).json({ message: "No more photos available" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({ message: "Server error while fetching photos" });
   }
 });
 

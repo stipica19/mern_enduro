@@ -123,14 +123,14 @@ const Apply = () => {
         )
       );
 
-      /* emailjs
+      emailjs
         .sendForm(
           import.meta.env.VITE_YOUR_SERVICE_ID,
           import.meta.env.VITE_YOUR_TEMPLATE_ID_APPLY,
           form.current,
           import.meta.env.VITE_YOUR_PUBLIC_KEY
         )
-        .catch(console.log);*/
+        .catch(console.log);
     } catch (error) {
       setNotification(error);
     } finally {

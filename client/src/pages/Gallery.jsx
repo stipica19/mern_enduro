@@ -19,31 +19,30 @@ const Gallery = () => {
       },
     };
     const deletePhoto = axios.delete(
-      `/api/index/deletePhoto/${photoId}`,
+      `api/index/deletePhoto/${photoId}`,
       config
     );
     window.location.reload(false);
   };
+  // console.log(photos);
 
   const displayPhoto = photos.map((photo, index) => {
     return (
-      <>
-        <div key={photo._id} className="delete-x">
-          {userInfo && userInfo.isAdmin && (
-            <button
-              className="delete-btn"
-              onClick={() => handleDelete(photo._id)}
-            >
-              X
-            </button>
-          )}
-          <img
-            src={`/api/${photo.image}`}
-            alt={photo.image}
-            onClick={() => handleClick(photo, index)}
-          />
-        </div>
-      </>
+      <div key={photo._id} className="delete-x">
+        {userInfo && userInfo.isAdmin && (
+          <button
+            className="delete-btn"
+            onClick={() => handleDelete(photo._id)}
+          >
+            X
+          </button>
+        )}
+        <img
+          src={`api/${photo.image}`}
+          alt={photo.image}
+          onClick={() => handleClick(photo, index)}
+        />
+      </div>
     );
   });
 
@@ -105,7 +104,7 @@ const Gallery = () => {
             <div ref={loadMoreRef}>
               {/* Umjesto prikaza Loader-a, dodajemo poruku ili ne prikazujemo ništa */}
               {loading && <p>Loading...</p>}
-              {isEnd && <p></p>}
+              {isEnd && <p>No more photos to load</p>}
             </div>
             <div>
               {clickedImg && (
